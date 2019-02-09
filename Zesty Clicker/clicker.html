@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zesty Clicker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kodchasan' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0px;
+            background: #32cd3252;
+            overflow: hidden;
+        }
+        #lime {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 75%;
+            max-width: 370px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            font-family: 'Kodchasan', sans-serif;
+        }
+        #count {
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Kodchasan', sans-serif;
+            font-weight: 600;
+        }
+        #footer {
+            width:100%;
+            display: table;
+            background: #5ad65a;
+            height: 8%;
+            position: fixed;
+            bottom: 0px;
+        }
+        #popup {
+            position: absolute;
+            margin: auto;
+            left: 0;
+            bottom: 7.5%;
+            width: 0%;
+            max-width: 0px;
+            height: 0;
+            background: #5ad65a;
+            border-radius: 0 40px 0 0;
+            transition: height 300ms ease;
+        }
+        #popup.active {
+        width: 70vw;
+        max-width: 1000px;
+        height: 70vh;
+        max-height: 1200px;
+        }
+        .button {
+            background-color: #008206;
+            border: none;
+            color: #FFFFFF;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #00820669; /* Green */
+            color: white;
+        }
+        #shoptable {
+            width: 100%;
+            padding: 20px 10% 20px 20px;
+            display: none;
+        }
+        table .heading {
+             font-family: 'Permanent Marker', cursive;
+             font-size: 50px;
+         }
+        table .heading.left {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 50px;
+        }
+        table .heading.right {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 50px;
+            text-align: right;
+        }
+        table .left {
+
+        }
+        table .right {
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Zesty Clicker</h1>
+        <p id="count"></p>
+        <img src="lime.png" id="lime" />
+
+        <div id="popup">
+            <table id="shoptable">
+                <tr>
+                    <td class="heading left">ITEM</td>
+                    <td class="heading right">PRICE</td>
+                </tr>
+                <tr>
+                    <td class="left">Item 1</td>
+                    <td class="right">10</td>
+                </tr>
+                <tr>
+                    <td class="left">Item 2</td>
+                    <td class="right">50</td>
+                </tr>
+                <tr>
+                    <td class="left">Item 3</td>
+                    <td class="right">100</td>
+                </tr>
+            </table>
+        </div>
+        <div id="footer">
+            <div style="width: 30%; display: table-cell; vertical-align: middle; padding-left: 20px">
+                <input type="button" class="button" id="shop" value="Shop" onclick="shopClick()"/>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var popup = false;
+    var count = 0;
+    $('#count').text(count.toString());
+
+    $('#lime').click(function(){
+       console.log('click');
+       count++;
+       $('#count').text(count.toString());
+    });
+
+    $('#lime').mousedown(function () {
+        $('#lime').css('width', '73%').css('max-width', '361px');
+    });
+    $('#lime').mouseup(function () {
+        $('#lime').css('width', '75%').css('max-width', '370px');
+    })
+
+    function shopClick() {
+        if(popup === false) {
+            popup = true;
+            $('#popup').addClass('active');
+            $('#shoptable').css('display', 'inline-table');
+        } else{
+            popup = false;
+            $('#popup').removeClass('active');
+            $('#shoptable').css('display', 'none');
+
+
+        }
+    }
+</script>
+</html>
