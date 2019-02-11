@@ -155,34 +155,49 @@
 </body>
 
 <script type="text/javascript">
-    var popup = false;
     var count = 0;
+    var clickPower = 1;
     var lime = $('#lime');
     var item1 = $('#item1');
     var item2 = $('#item2');
     var item3 = $('#item3');
-    var items = document.getElementsByClassName('itemrow');
     var price = [];
     price[0] = 10;
     price[1] = 50;
     price[2] = 100;
 
-    for (var i = 0; i < items.length; i++) {
-        $(items[i]).closest('.price').val(price[i]);
+    var i = 0;
+    $('.price').each(function(){
+        $(this).text(price[i]);
+        i++;
+    });
+
+    function updatePrice() {
+        var i = 0;
+        $('.price').each(function(){
+            $(this).text(price[i]);
+            i++;
+        });
     }
 
     $('#count').text(count.toString());
 
     lime.click(function(){
        console.log('click');
-       count++;
+       count = count + clickPower;
        $('#count').text(count.toString());
     });
 
     item1.click(function(){
-       if(count => price1) {
-           count = count - price1;
-           price1 = price1*1.1;
+        console.log(price[0]);
+       if(price[0] <= count) {
+           count = count - price[0];
+           price[0] = Math.floor(price[0]*1.8);
+           updatePrice();
+           $('#count').text(count.toString());
+           clickPower += 1;
+       } else {
+           console.log('nah');
        }
     });
 
