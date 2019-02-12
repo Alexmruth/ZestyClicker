@@ -156,16 +156,22 @@
 </body>
 
 <script type="text/javascript">
-  var count = 0;
-  var clickPower = 1;
   var lime = $('#lime');
   var item1 = $('#item1');
   var item2 = $('#item2');
   var item3 = $('#item3');
+
+  var count = 0;
+  var clickPower = 1;
+
+  var autoClick = 0;
+
   var price = [];
   price[0] = 10;
-  price[1] = 100;
+  price[1] = 50;
   price[2] = 1000;
+
+  $('#count').text(count.toString());
 
   var i = 0;
   $('.price').each(function(){
@@ -180,8 +186,6 @@
       i++;
     });
   }
-
-  $('#count').text(count.toString());
 
   lime.click(function(){
     console.log('click');
@@ -204,10 +208,10 @@
   item2.click(function(){
     if(price[1] <= count) {
       count = count - price[1];
-      price[1] = Math.floor(price[1]*1.7);
+      price[1] = Math.floor(price[1]*1.2);
       updatePrice();
       $('#count').text(count.toString());
-      clickPower += 0.5;
+      autoClick += 0.1;
     } else {
 
     }
