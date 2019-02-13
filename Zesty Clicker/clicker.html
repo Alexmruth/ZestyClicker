@@ -9,10 +9,10 @@
   <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 
   <style>
-    body {
+    #body {
       margin: 0px;
-      /*background: #32cd3252;*/
-      background-color: #32cd3252;
+      background: #32cd3252;
+      /*background-color: #32cd3252;*/
       overflow: hidden;
     }
     #lime {
@@ -24,6 +24,10 @@
       bottom: 0;
       width: 75%;
       max-width: 370px;
+    }
+    #lime.clicked {
+        width: 73%;
+        max-width: 361px;
     }
     #lime-small {
       display: inline-block;
@@ -91,11 +95,10 @@
         font-size: 30px;
         background: url(lime-bar.png);
         cursor: pointer;
-        opacity:0.9;
-        filter: brightness(0.9);
+        filter: brightness(0.97);
     }
     .itemrow:hover {
-        filter: brightness(1);
+        filter: brightness(1.03);
     }
     .item-container {
         display: inline-flex;
@@ -145,7 +148,7 @@
       }
   </style>
 </head>
-<body>
+<body id="body">
 <div id="shop-container">
   <div id="shopContent">
     <div class="shop-heading">STORE</div>
@@ -173,7 +176,10 @@
 </div>
 <div id="container">
   <h1>Zesty Clicker</h1>
-  <p id="count"></p>
+    <div id="count-container">
+        <p id="count"></p>
+        <p id="persec"></p>
+    </div>
   <img id="lime" src="lime.png" />
 </div>
 <div id="footer">
@@ -201,9 +207,9 @@
 
   var price = [];
   price[0] = 1;
-  price[1] = 10;
-  price[2] = 50;
-  price[3] = 1000;
+  price[1] = 20;
+  price[2] = 30;
+  price[3] = 500;
 
   function countValue() {
       if(autoClick < 3) {
@@ -213,7 +219,6 @@
       }
       return display;
   }
-
 
   setInterval(function()
   {
@@ -248,9 +253,10 @@
     if(price[1] <= count) {
         count = count - price[1];
         levels[1]++;
-        price[1] = Math.floor(price[1]+levels[1]*1.1);
+        price[1] = price[1] * Math.pow(1.05,levels[1]);
         updatePrice();
-        autoClick += 0.1;
+        autoClick = autoClick + 0.1;
+        $("#persec").text("Per second: " + autoClick.toFixed(1));
     } else {
 
     }
@@ -281,10 +287,10 @@
   });
 
   lime.mousedown(function () {
-    lime.css('width', '73%').css('max-width', '361px');
+      lime.attr('class', 'clicked');
   });
   lime.mouseup(function () {
-    lime.css('width', '75%').css('max-width', '370px');
+      lime.attr('class', '');
   });
 
 
