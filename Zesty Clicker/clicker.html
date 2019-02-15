@@ -63,13 +63,15 @@
       font-family: 'Kodchasan', sans-serif;
       font-weight: 600;
         margin-top: 5px;
+        margin-bottom: 0px;
     }
     .stats {
         text-align: center;
         font-size: 20px;
         font-family: 'Kodchasan', sans-serif;
         font-weight: 600;
-        margin-top: 5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
     #footer {
       width:100%;
@@ -191,7 +193,7 @@
             <div class="right"><img class="lime-small" src="lime.png" /><p class="price"></p></div>
         </div>
         <div class="purchased-container">
-            <p class="purchased">20</p>
+            <p class="purchased"></p>
         </div>
     </div>
     <div class="itemrow" id='item2'>
@@ -199,6 +201,9 @@
             <div class="left">Item 2</div>
             <div class="right"><img class="lime-small" src="lime.png" /><p class="price"></p></div>
         </div>
+        <div class="purchased-container">
+        <p class="purchased"></p>
+    </div>
 
     </div>
     <div class="itemrow" id='item3'>
@@ -206,6 +211,9 @@
             <div class="left">Item 3</div>
             <div class="right"><img class="lime-small" src="lime.png" /><p class="price"></p></div>
         </div>
+        <div class="purchased-container">
+        <p class="purchased"></p>
+    </div>
     </div>
   </div>
 </div>
@@ -213,8 +221,8 @@
   <h1>Zesty Clicker</h1>
     <div id="count-container">
         <p id="count"></p>
-        <p id="click-power" class="stats"></p>
         <p id="persec" class="stats"></p>
+        <p id="click-power" class="stats"></p>
     </div>
   <img id="lime" src="lime.png" />
 </div>
@@ -249,6 +257,24 @@
   price[2] = 100;
   price[3] = 500;
 
+  //INITIALIZE VALS ON SCREEN **************************************
+  $('#count').text(countValue());
+  $("#click-power").text("Click power: " + clickPower.toString());
+
+  //update purchased
+  var i = 1;
+  $('.purchased').each(function(){
+      $(this).text(levels[i]);
+      i++;
+  });
+
+  var i = 1;
+  $('.price').each(function(){
+      $(this).text(price[i]);
+      i++;
+  });
+  //******************************************************************
+
   function countValue() {
       var display = (Math.trunc(count));
       return display;
@@ -256,19 +282,11 @@
 
   setInterval(function()
   {
-      count = count + autoClick/10;
+      count = count + autoClick/20;
       // $('#count').text(count.toString());
       $('#count').text(countValue());
-  }, 100);
+  }, 50);
 
-  $('#count').text(countValue());
-  $("#click-power").text("Click power: " + clickPower.toString());
-
-  var i = 1;
-  $('.price').each(function(){
-    $(this).text(price[i]);
-    i++;
-  });
 
   function updateFields() {
       //Update per sec
@@ -282,6 +300,12 @@
       $(this).text(price[i]);
       i++;
     });
+    //update purchased
+      var i = 1;
+      $('.purchased').each(function(){
+          $(this).text(levels[i]);
+          i++;
+      });
   }
 
   lime.click(function(){
@@ -294,7 +318,7 @@
     if(price[1] <= count) {
         count = count - price[1];
         levels[1]++;
-        price[1] = Math.ceil(10 * Math.pow(1.1,levels[1]));
+        price[1] = Math.ceil(10 * Math.pow(1.05,levels[1]));
         autoClick = autoClick + 0.1;
         updateFields();
     } else {
@@ -306,7 +330,7 @@
     if(price[2] <= count) {
         count = count - price[2];
         levels[2]++;
-        price[2] = Math.ceil(100 * Math.pow(1.1,levels[2]));
+        price[2] = Math.ceil(100 * Math.pow(1.05,levels[2]));
         autoClick = autoClick + 1;
         updateFields();
     } else {
@@ -318,7 +342,7 @@
     if(price[3] <= count) {
         count = count - price[3];
         levels[3]++;
-        price[3] = Math.ceil(1000 * Math.pow(1.1,levels[3]));
+        price[3] = Math.ceil(500 * Math.pow(1.05,levels[3]));
         clickPower += 1;
         updateFields();
     } else {
