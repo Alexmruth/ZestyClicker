@@ -65,7 +65,6 @@
             display: inline-block;
             vertical-align: middle;
             max-width: 22px;
-            margin-left: 4px;
             margin-top: -5px;
         }
 
@@ -108,12 +107,16 @@
             height: 100vh;
             left: 0;
             position: absolute;
-            border-right: 10px solid;
-            border-color: darkgreen;
-            /*background: -moz-linear-gradient(90deg, rgba(0,255,171,1) 40%, rgba(0,255,171,0.8435749299719888) 55%, rgba(0,255,171,0.3309698879551821) 75%, rgba(0,255,171,0) 99%);*/
-            /*background: -webkit-linear-gradient(90deg, rgba(0,255,171,1) 40%, rgba(0,255,171,0.8435749299719888) 55%, rgba(0,255,171,0.3309698879551821) 75%, rgba(0,255,171,0) 99%);*/
-            /*background: linear-gradient(90deg, rgba(0,255,171,1) 40%, rgba(0,255,171,0.8435749299719888) 55%, rgba(0,255,171,0.3309698879551821) 75%, rgba(0,255,171,0) 99%);*/
-            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffab",endColorstr="#00ffab",GradientType=1);*/
+            background: rgb(186,137,0);
+            background: -moz-linear-gradient(270deg, rgba(186,137,0,0) 1%, rgba(186,137,0,0.30015756302521013) 25%, rgba(186,137,0,0.5970763305322129) 50%, rgba(186,137,0,1) 100%);
+            background: -webkit-linear-gradient(270deg, rgba(186,137,0,0) 1%, rgba(186,137,0,0.30015756302521013) 25%, rgba(186,137,0,0.5970763305322129) 50%, rgba(186,137,0,1) 100%);
+            background: linear-gradient(270deg, rgba(186,137,0,0) 1%, rgba(186,137,0,0.30015756302521013) 25%, rgba(186,137,0,0.5970763305322129) 50%, rgba(186,137,0,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ba8900",endColorstr="#ba8900",GradientType=1);
+            /*background: rgb(186,137,0);*/
+            /*background: -moz-linear-gradient(270deg, rgba(186,137,0,0.30015756302521013) 0%, rgba(186,137,0,1) 100%);*/
+            /*background: -webkit-linear-gradient(270deg, rgba(186,137,0,0.30015756302521013) 0%, rgba(186,137,0,1) 100%);*/
+            /*background: linear-gradient(270deg, rgba(186,137,0,0.30015756302521013) 0%, rgba(186,137,0,1) 100%);*/
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ba8900",endColorstr="#ba8900",GradientType=1);*/
         }
 
         .button {
@@ -142,50 +145,45 @@
         .itemrow {
             height: 95px;
             width: 100%;
-            font-size: 30px;
             background-repeat: no-repeat;
             cursor: pointer;
-            filter: brightness(0.97);
+            filter: brightness(0.95);
+            /*border-top: 2px solid #000000b5;*/
+            font-family: 'Kodchasan', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
 
-            background: rgb(0,255,171);
-            background: -moz-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);
-            background: -webkit-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);
-            background: linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffab",endColorstr="#00ffab",GradientType=1);
+            /*background: rgb(0,255,171);*/
+            /*background: -moz-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);*/
+            /*background: -webkit-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);*/
+            /*background: linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);*/
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffab",endColorstr="#00ffab",GradientType=1);*/
         }
 
         .itemrow:hover {
             filter: brightness(1.05);
+            background: #ffc1075e;
         }
 
         .item-container {
             vertical-align: middle;
             display: table-cell;
-            padding-left: 22px;
+            padding-left: 10px;
             height: 100%;
 
         }
-
-        .left {
-        }
-
         .right {
             text-align: right;
             display: table-row;
         }
 
-        .item {
-            width: 38%;
-        }
-
         .price {
             width: 50%;
+            padding-left: 5px;
             display: inline;
-            font-size: 25px;
         }
 
         .purchased {
-            font-size: 25px;
             position: relative;
             vertical-align: middle;
         }
@@ -196,6 +194,7 @@
             position: relative;
             height: 100%;
             vertical-align: middle;
+            text-align: right;
         }
 
         .shop-heading {
@@ -220,7 +219,7 @@
             display: table-cell;
         }
         .powerup-img {
-            height: 60px;
+            height: 95px;
             display: inline-block;
             vertical-align: middle;
             position: relative;
@@ -245,7 +244,7 @@
         .limeclick {
             /*background: url(lime.png);*/
             /*background-size: contain;*/
-            font-size: 25px;
+            font-size: 30px;
             opacity: 0.7;
             font-family: 'Kodchasan', serif;
             font-weight: 600;
@@ -254,20 +253,16 @@
             transition: all 4s ease-in;
         }
 
-        .limeclick2 {
-            /*background: url(lime.png);*/
-            /*background-size: contain;*/
-            font-size: 30px;
-            opacity: 0.7;
-            font-family: 'Kodchasan', serif;
-            font-weight: 600;
-            width: 30px;
-            height: 30px;
-            transition: all 1800ms ease-in;
-        }
-
         .rise {
             top: 0px !important;
+        }
+        .border {
+            background: url(lime-border.png);
+            left: 400px;
+            position: absolute;
+            width: 28px;
+            height: 100%;
+            background-position-y: bottom;
         }
     </style>
 </head>
@@ -279,9 +274,9 @@
 
             <div class="itemrow" id='item1'>
                 <div class="bg-item">
-                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="img-container"><img class="powerup-img" src="harold.png"/></div>
                         <div class="item-container">
-                            <div class="left">Item 1</div>
+                            <div class="left">Harold</div>
                             <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                         </div>
                         <div class="purchased-container">
@@ -293,7 +288,7 @@
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
-                        <div class="left">Item 2</div>
+                        <div class="left">Lime Tree</div>
                         <div class="right"><img class="lime-small" src="lime.png"/>
                             <p class="price"></p></div>
                     </div>
@@ -306,18 +301,54 @@
             <div class="itemrow" id='item3'>
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
-                <div class="item-container">
-                    <div class="left">Item 3</div>
-                    <div class="right"><img class="lime-small" src="lime.png"/>
-                        <p class="price"></p></div>
-                </div>
-                <div class="purchased-container">
-                    <p class="purchased"></p>
+                    <div class="item-container">
+                        <div class="left">Item 3</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
                 </div>
             </div>
+            <div class="itemrow" id='item4'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Item 4</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itemrow" id='item5'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Item 5</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itemrow" id='item6'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Item 6</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!--<div class="border"></div>-->
     <div id="container">
         <h1>Zesty Clicker</h1>
         <div id="count-container">
@@ -330,7 +361,7 @@
 </div>
 <div id="footer">
     <div style="width: 30%; display: table-cell; vertical-align: middle; padding-left: 20px">
-        <input class="button" id="shop" onclick="shopClick()" type="button" value="Shop"/>
+        <!--<input class="button" id="shop" onclick="shopClick()" type="button" value="Shop"/>-->
     </div>
 </div>
 </body>
@@ -340,6 +371,9 @@
     var item1 = $('#item1');
     var item2 = $('#item2');
     var item3 = $('#item3');
+    var item4 = $('#item4');
+    var item5 = $('#item5');
+    var item6 = $('#item6');
 
     var count = 0;
     var clickPower = 1;
@@ -350,43 +384,30 @@
     levels[1] = 0;
     levels[2] = 0;
     levels[3] = 0;
-
+    levels[4] = 0;
+    levels[5] = 0;
+    levels[6] = 0;
+    var autoClickPower = [1,0.1,1,10,100,800,7000,15000];
+// next base price = previous x 10 + 1/8
     var basePrice = [];
-    basePrice[0] = 1;
-    basePrice[1] = 10;
-    basePrice[2] = 100;
-    basePrice[3] = 250;
+    basePrice[0] = 1; // = 0.1
+    basePrice[1] = 10; // = 1
+    basePrice[2] = 100; // = 10
+    basePrice[3] = 1012; // = 100
+    basePrice[4] = 11380; // 800
+    basePrice[5] = 128000; // 7000
+    basePrice[6] = 1340000; // 15000
+
     var price = [];
     price[0] = 1;
     price[1] = 10;
     price[2] = 100;
-    price[3] = 250;
+    price[3] = 1012;
+    price[4] = 11380;
+    price[5] = 128000;
+    price[6] = 1340000;
 
-    lime.mousedown(function (e) {
-        $("body").append('<div class="limeclick" style="top:' + (e.clientY - 20) + 'px; left:' + (e.clientX - 15) + 'px; position:fixed; pointer-events: none;">+' + clickPower + '</div>');
 
-        // $(".limeclick").css('top', e.clientY -20).css('left', e.clientX -15);
-    });
-    setInterval(function () {
-        $(".limeclick").each(function () {
-            $(this).css('top', '30px');
-            $(this).css('opacity', '0');
-
-            if (!$(this).hasClass('left')) {
-                var left = $(this).offset().left;
-                $(this).css('left', (Math.random() * ((left + 100) - (left - 100)) + (left - 100)));
-                $(this).attr('class', 'limeclick left');
-            }
-            ;
-            if ($(this).css('top') == '30px') {
-                $(this).remove();
-            }
-        });
-    }, 50);
-
-    // function removeLime(lime) {
-    //     $(lime).remove();
-    // }
 
     //INITIALIZE VALS ON SCREEN **************************************
     $('#count').text(countValue());
@@ -404,19 +425,50 @@
         $(this).text(price[i]);
         i++;
     });
-
     //******************************************************************
 
-    function countValue() {
-        var display = (Math.trunc(count));
-        return display;
-    }
+    //LIME ACTIONS *****************************************************
+    lime.click(function () {
+        count = count + clickPower;
+        $('#count').text(countValue());
+    });
+    lime.mousedown(function () {
+        lime.attr('class', 'clicked');
+    });
+    lime.mouseup(function () {
+        lime.attr('class', '');
+    });
+
+    lime.mousedown(function (e) {
+        $("body").append('<div class="limeclick" style="top:' + (e.clientY - 20) + 'px; left:' + (e.clientX - 15) + 'px; position:fixed; pointer-events: none;">+' + clickPower + '</div>');
+    });
 
     setInterval(function () {
         count = count + autoClick / 20;
         // $('#count').text(count.toString());
         $('#count').text(countValue());
+
+        $(".limeclick").each(function () {
+            $(this).css('top', '30px');
+            $(this).css('opacity', '0');
+
+            if (!$(this).hasClass('left')) {
+                var left = $(this).offset().left;
+                $(this).css('left', (Math.random() * ((left + 100) - (left - 100)) + (left - 100)));
+                $(this).attr('class', 'limeclick left');
+            }
+            ;
+            if ($(this).css('top') == '30px') {
+                $(this).remove();
+            }
+        });
     }, 50);
+    //***************************************************************
+
+    function countValue() {
+        var display = (Math.trunc(count));
+        return display;
+    }
 
 
     function updateFields() {
@@ -437,20 +489,13 @@
         });
     }
 
-    lime.click(function () {
-        count = count + clickPower;
-        $('#count').text(countValue());
-    });
-
     item1.click(function () {
         if (price[1] <= count) {
             count = count - price[1];
             levels[1]++;
-            price[1] = Math.ceil(basePrice[1] * Math.pow(1.05, levels[1]));
-            autoClick = autoClick + 0.1;
+            price[1] = Math.ceil(basePrice[1] * Math.pow(1.1, levels[1]));
+            autoClick += autoClickPower[1];
             updateFields();
-        } else {
-
         }
     });
 
@@ -458,11 +503,9 @@
         if (price[2] <= count) {
             count = count - price[2];
             levels[2]++;
-            price[2] = Math.ceil(basePrice[2] * Math.pow(1.05, levels[2]));
-            autoClick = autoClick + 1;
+            price[2] = Math.ceil(basePrice[2] * Math.pow(1.1, levels[2]));
+            autoClick += autoClickPower[2];
             updateFields();
-        } else {
-
         }
     });
 
@@ -470,19 +513,40 @@
         if (price[3] <= count) {
             count = count - price[3];
             levels[3]++;
-            price[3] = Math.ceil(basePrice[3] * Math.pow(1.05, levels[3]));
-            clickPower += 1;
+            price[3] = Math.ceil(basePrice[3] * Math.pow(1.1, levels[3]));
+            autoClick += autoClickPower[3];
             updateFields();
-        } else {
-
         }
     });
 
-    lime.mousedown(function () {
-        lime.attr('class', 'clicked');
+    item4.click(function () {
+        if (price[4] <= count) {
+            count = count - price[4];
+            levels[4]++;
+            price[4] = Math.ceil(basePrice[4] * Math.pow(1.1, levels[4]));
+            clickPower += autoClickPower[4];
+            updateFields();
+        }
     });
-    lime.mouseup(function () {
-        lime.attr('class', '');
+
+    item5.click(function () {
+        if (price[5] <= count) {
+            count = count - price[5];
+            levels[5]++;
+            price[5] = Math.ceil(basePrice[5] * Math.pow(1.1, levels[5]));
+            clickPower += autoClickPower[5];
+            updateFields();
+        }
+    });
+
+    item6.click(function () {
+        if (price[6] <= count) {
+            count = count - price[6];
+            levels[6]++;
+            price[6] = Math.ceil(basePrice[6] * Math.pow(1.1, levels[6]));
+            clickPower += autoClickPower[6];
+            updateFields();
+        }
     });
 
 
