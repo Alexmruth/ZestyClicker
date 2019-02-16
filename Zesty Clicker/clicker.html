@@ -1,362 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Zesty Clicker</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Kodchasan' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>Zesty Clicker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kodchasan' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 
-  <style>
-    body {
-        margin: 0;
-      overflow: hidden;
-        user-select: none;
-        -moz-user-select: none;
-    }
-    .bg {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        /*background: rgb(101,237,172);*/
-        /*background: -moz-linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
-        /*background: -webkit-linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
-        /*background: linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
-        /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#65edac",endColorstr="#2d8243",GradientType=1);*/
-        background: rgb(140,255,200);
-        background: -moz-linear-gradient(180deg, rgba(140,255,200,0.8435749299719888) 0%, rgba(87,227,141,0.8995973389355743) 19%, rgba(45,196,45,0.9668242296918768) 50%, rgba(45,148,61,1) 80%, rgba(0,110,29,1) 99%);
-        background: -webkit-linear-gradient(180deg, rgba(140,255,200,0.8435749299719888) 0%, rgba(87,227,141,0.8995973389355743) 19%, rgba(45,196,45,0.9668242296918768) 50%, rgba(45,148,61,1) 80%, rgba(0,110,29,1) 99%);
-        background: linear-gradient(180deg, rgba(140,255,200,0.8435749299719888) 0%, rgba(87,227,141,0.8995973389355743) 19%, rgba(45,196,45,0.9668242296918768) 50%, rgba(45,148,61,1) 80%, rgba(0,110,29,1) 99%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8cffc8",endColorstr="#006e1d",GradientType=1);
-    }
-    #lime {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 75%;
-      max-width: 370px;
-    }
-    #lime.clicked {
-        width: 73%;
-        max-width: 361px;
-    }
-    .lime-small {
-      display: inline-block;
-      vertical-align: middle;
-      max-width: 22px;
-      margin-left: 4px;
-      margin-top: -5px;
-    }
-    h1 {
-        margin-bottom: 0px;
-      text-align: center;
-      font-size: 60px;
-      font-family: 'Kodchasan', sans-serif;
-    }
-    #count {
-      text-align: center;
-      font-size: 40px;
-      font-family: 'Kodchasan', sans-serif;
-      font-weight: 600;
-        margin-top: 5px;
-        margin-bottom: 0px;
-    }
-    .stats {
-        text-align: center;
-        font-size: 20px;
-        font-family: 'Kodchasan', sans-serif;
-        font-weight: 600;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-    #footer {
-      width:100%;
-      display: table;
-      /*background: #5ad65a;*/
-      height: 8%;
-      position: fixed;
-      bottom: 0px;
-    }
-    #shop-container {
-      width: 400px;
-        height: 92vh;
-      left: 0;
-      bottom: 8%;
-      position: absolute;
-      /*background: #5ad65a;*/
-      margin-top: 50px;
-    }
-    .button {
-      background-color: #06af0e;
-      border: none;
-      color: #FFFFFF;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      -webkit-transition-duration: 0.3s;
-      transition-duration: 0.3s;
-    }
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            user-select: none;
+            -moz-user-select: none;
+        }
 
-    .button:hover {
-      background-color: #00820669; /* Green */
-      color: white;
-    }
-    #shopContent {
-      width: 100%;
-    }
-    .itemrow {
-        padding-top: 13px;
-        height: 95px;
-        width: 100%;
-        font-size: 30px;
-        background: url(store-bar.png);
-        background-size: 100%;
-        background-repeat: no-repeat;
-        cursor: pointer;
-        filter: brightness(0.97);
-    }
-    .itemrow:hover {
-        filter: brightness(1.05);
-    }
-    .item-container {
-        display: inline-block;
-        padding-left: 22px;
-        padding-top: 6px;
-    }
-    .left {
-    }
-    .right {
-      text-align: right;
-      height: 45px;
-        display: table-row;
-    }
-    .item {
-      width: 38%;
-    }
-    .price {
-      width: 50%;
-      display: inline;
-      font-size: 25px;
-    }
-    .purchased {
-        font-size: 25px;
-    }
-    .purchased-container {
-        display: inline-block;
-        right: 20px;
-        position: absolute;
-    }
-    .shop-heading {
-      width: 100%;
-      text-align: center;
-      font-family: 'Permanent Marker', cursive;
-      font-size: 50px;
-    }
-    #container {
-      display: unset;
-      position: absolute;
-      left: 50%;
-      /* width: 70%; */
-      height: 100%;
-    }
-      @media (max-height: 800px) {
-          #lime {
-              top: 100px;
-          }
-      }
-      @media (max-height: 640px) {
-          #lime {
-            max-width: 250px;
-          }
-          #lime.clicked {
-              max-width: 241px;
-          }
-      }
-  </style>
+        .bg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            /*background: rgb(101,237,172);*/
+            /*background: -moz-linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
+            /*background: -webkit-linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
+            /*background: linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#65edac",endColorstr="#2d8243",GradientType=1);*/
+            background: rgb(140, 255, 200);
+            background: -moz-linear-gradient(180deg, rgba(140, 255, 200, 0.8435749299719888) 0%, rgba(87, 227, 141, 0.8995973389355743) 19%, rgba(45, 196, 45, 0.9668242296918768) 50%, rgba(45, 148, 61, 1) 80%, rgba(0, 110, 29, 1) 99%);
+            background: -webkit-linear-gradient(180deg, rgba(140, 255, 200, 0.8435749299719888) 0%, rgba(87, 227, 141, 0.8995973389355743) 19%, rgba(45, 196, 45, 0.9668242296918768) 50%, rgba(45, 148, 61, 1) 80%, rgba(0, 110, 29, 1) 99%);
+            background: linear-gradient(180deg, rgba(140, 255, 200, 0.8435749299719888) 0%, rgba(87, 227, 141, 0.8995973389355743) 19%, rgba(45, 196, 45, 0.9668242296918768) 50%, rgba(45, 148, 61, 1) 80%, rgba(0, 110, 29, 1) 99%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8cffc8", endColorstr="#006e1d", GradientType=1);
+        }
+
+        .bg-item {
+            width: 100%;
+            height: inherit;
+            position: absolute;
+            display: table;
+        }
+
+        #lime {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 75%;
+            max-width: 370px;
+            user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        #lime.clicked {
+            width: 73%;
+            max-width: 361px;
+        }
+
+        .lime-small {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 22px;
+            margin-left: 4px;
+            margin-top: -5px;
+        }
+
+        h1 {
+            margin-bottom: 0px;
+            text-align: center;
+            font-size: 60px;
+            font-family: 'Kodchasan', sans-serif;
+        }
+
+        #count {
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Kodchasan', sans-serif;
+            font-weight: 600;
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+        .stats {
+            text-align: center;
+            font-size: 20px;
+            font-family: 'Kodchasan', sans-serif;
+            font-weight: 600;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        #footer {
+            width: 100%;
+            display: table;
+            /*background: #5ad65a;*/
+            height: 8%;
+            position: fixed;
+            bottom: 0px;
+        }
+
+        #shop-container {
+            width: 400px;
+            height: 100vh;
+            left: 0;
+            position: absolute;
+            border-right: 10px solid;
+            border-color: darkgreen;
+            /*background: -moz-linear-gradient(90deg, rgba(0,255,171,1) 40%, rgba(0,255,171,0.8435749299719888) 55%, rgba(0,255,171,0.3309698879551821) 75%, rgba(0,255,171,0) 99%);*/
+            /*background: -webkit-linear-gradient(90deg, rgba(0,255,171,1) 40%, rgba(0,255,171,0.8435749299719888) 55%, rgba(0,255,171,0.3309698879551821) 75%, rgba(0,255,171,0) 99%);*/
+            /*background: linear-gradient(90deg, rgba(0,255,171,1) 40%, rgba(0,255,171,0.8435749299719888) 55%, rgba(0,255,171,0.3309698879551821) 75%, rgba(0,255,171,0) 99%);*/
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffab",endColorstr="#00ffab",GradientType=1);*/
+        }
+
+        .button {
+            background-color: #06af0e;
+            border: none;
+            color: #FFFFFF;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #00820669; /* Green */
+            color: white;
+        }
+
+        #shopContent {
+            width: 100%;
+        }
+
+        .itemrow {
+            height: 95px;
+            width: 100%;
+            font-size: 30px;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            filter: brightness(0.97);
+
+            background: rgb(0,255,171);
+            background: -moz-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);
+            background: linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffab",endColorstr="#00ffab",GradientType=1);
+        }
+
+        .itemrow:hover {
+            filter: brightness(1.05);
+        }
+
+        .item-container {
+            vertical-align: middle;
+            display: table-cell;
+            padding-left: 22px;
+            height: 100%;
+
+        }
+
+        .left {
+        }
+
+        .right {
+            text-align: right;
+            display: table-row;
+        }
+
+        .item {
+            width: 38%;
+        }
+
+        .price {
+            width: 50%;
+            display: inline;
+            font-size: 25px;
+        }
+
+        .purchased {
+            font-size: 25px;
+            position: relative;
+            vertical-align: middle;
+        }
+
+        .purchased-container {
+            display: table-cell;
+            right: 20px;
+            position: relative;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .shop-heading {
+            width: 100%;
+            text-align: center;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 50px;
+        }
+
+        #container {
+            display: unset;
+            position: absolute;
+            left: 50%;
+            /* width: 70%; */
+            height: 100%;
+        }
+        .img-container {
+            width: 60px;
+            height: 100%;
+            position: relative;
+            vertical-align: middle;
+            display: table-cell;
+        }
+        .powerup-img {
+            height: 60px;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        @media (max-height: 800px) {
+            #lime {
+                top: 100px;
+            }
+        }
+
+        @media (max-height: 640px) {
+            #lime {
+                max-width: 250px;
+            }
+
+            #lime.clicked {
+                max-width: 241px;
+            }
+        }
+
+        .limeclick {
+            /*background: url(lime.png);*/
+            /*background-size: contain;*/
+            font-size: 25px;
+            opacity: 0.7;
+            font-family: 'Kodchasan', serif;
+            font-weight: 600;
+            width: 30px;
+            height: 30px;
+            transition: all 4s ease-in;
+        }
+
+        .limeclick2 {
+            /*background: url(lime.png);*/
+            /*background-size: contain;*/
+            font-size: 30px;
+            opacity: 0.7;
+            font-family: 'Kodchasan', serif;
+            font-weight: 600;
+            width: 30px;
+            height: 30px;
+            transition: all 1800ms ease-in;
+        }
+
+        .rise {
+            top: 0px !important;
+        }
+    </style>
 </head>
 <body id="body">
 <div class="bg">
-<div id="shop-container">
-  <div id="shopContent">
-    <div class="shop-heading">STORE</div>
+    <div id="shop-container">
+        <div id="shopContent">
+            <div class="shop-heading">STORE</div>
 
-    <div class="itemrow" id='item1'>
-        <div class="item-container">
-            <div class="left">Item 1</div>
-            <div class="right"><img class="lime-small" src="lime.png" /><p class="price"></p></div>
-        </div>
-        <div class="purchased-container">
-            <p class="purchased"></p>
-        </div>
-    </div>
-    <div class="itemrow" id='item2'>
-        <div class="item-container">
-            <div class="left">Item 2</div>
-            <div class="right"><img class="lime-small" src="lime.png" /><p class="price"></p></div>
-        </div>
-        <div class="purchased-container">
-        <p class="purchased"></p>
-    </div>
+            <div class="itemrow" id='item1'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                        <div class="item-container">
+                            <div class="left">Item 1</div>
+                            <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        </div>
+                        <div class="purchased-container">
+                            <p class="purchased"></p>
+                        </div>
+                </div>
+            </div>
+            <div class="itemrow" id='item2'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Item 2</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/>
+                            <p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-    <div class="itemrow" id='item3'>
-        <div class="item-container">
-            <div class="left">Item 3</div>
-            <div class="right"><img class="lime-small" src="lime.png" /><p class="price"></p></div>
+            <div class="itemrow" id='item3'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                <div class="item-container">
+                    <div class="left">Item 3</div>
+                    <div class="right"><img class="lime-small" src="lime.png"/>
+                        <p class="price"></p></div>
+                </div>
+                <div class="purchased-container">
+                    <p class="purchased"></p>
+                </div>
+            </div>
+            </div>
         </div>
-        <div class="purchased-container">
-        <p class="purchased"></p>
     </div>
+    <div id="container">
+        <h1>Zesty Clicker</h1>
+        <div id="count-container">
+            <p id="count"></p>
+            <p id="persec" class="stats"></p>
+        </div>
+        <img id="lime" src="lime.png"/>
     </div>
-  </div>
-</div>
-<div id="container">
-  <h1>Zesty Clicker</h1>
-    <div id="count-container">
-        <p id="count"></p>
-        <p id="persec" class="stats"></p>
-        <p id="click-power" class="stats"></p>
-    </div>
-  <img id="lime" src="lime.png" />
-</div>
 
 </div>
 <div id="footer">
-  <div style="width: 30%; display: table-cell; vertical-align: middle; padding-left: 20px">
-    <input class="button" id="shop" onclick="shopClick()" type="button" value="Shop"/>
-  </div>
+    <div style="width: 30%; display: table-cell; vertical-align: middle; padding-left: 20px">
+        <input class="button" id="shop" onclick="shopClick()" type="button" value="Shop"/>
+    </div>
 </div>
 </body>
 
 <script type="text/javascript">
-  var lime = $('#lime');
-  var item1 = $('#item1');
-  var item2 = $('#item2');
-  var item3 = $('#item3');
+    var lime = $('#lime');
+    var item1 = $('#item1');
+    var item2 = $('#item2');
+    var item3 = $('#item3');
 
-  var count = 1000;
-  var clickPower = 1;
+    var count = 0;
+    var clickPower = 1;
 
-  var autoClick = 0;
-  var levels = [];
-  levels[0] = 0;
-  levels[1] = 0;
-  levels[2] = 0;
-  levels[3] = 0;
+    var autoClick = 0;
+    var levels = [];
+    levels[0] = 0;
+    levels[1] = 0;
+    levels[2] = 0;
+    levels[3] = 0;
 
-  var price = [];
-  price[0] = 1;
-  price[1] = 10;
-  price[2] = 100;
-  price[3] = 500;
+    var basePrice = [];
+    basePrice[0] = 1;
+    basePrice[1] = 10;
+    basePrice[2] = 100;
+    basePrice[3] = 250;
+    var price = [];
+    price[0] = 1;
+    price[1] = 10;
+    price[2] = 100;
+    price[3] = 250;
 
-  //INITIALIZE VALS ON SCREEN **************************************
-  $('#count').text(countValue());
-  $("#click-power").text("Click power: " + clickPower.toString());
+    lime.mousedown(function (e) {
+        $("body").append('<div class="limeclick" style="top:' + (e.clientY - 20) + 'px; left:' + (e.clientX - 15) + 'px; position:fixed; pointer-events: none;">+' + clickPower + '</div>');
 
-  //update purchased
-  var i = 1;
-  $('.purchased').each(function(){
-      $(this).text(levels[i]);
-      i++;
-  });
-
-  var i = 1;
-  $('.price').each(function(){
-      $(this).text(price[i]);
-      i++;
-  });
-  //******************************************************************
-
-  function countValue() {
-      var display = (Math.trunc(count));
-      return display;
-  }
-
-  setInterval(function()
-  {
-      count = count + autoClick/20;
-      // $('#count').text(count.toString());
-      $('#count').text(countValue());
-  }, 50);
-
-
-  function updateFields() {
-      //Update per sec
-      $("#persec").text("Per second: " + autoClick.toFixed(1));
-      //Update click power
-      $("#click-power").text("Click power: " + clickPower.toString());
-
-      //Update store prices
-      var i = 1;
-    $('.price').each(function(){
-      $(this).text(price[i]);
-      i++;
+        // $(".limeclick").css('top', e.clientY -20).css('left', e.clientX -15);
     });
-    //update purchased
-      var i = 1;
-      $('.purchased').each(function(){
-          $(this).text(levels[i]);
-          i++;
-      });
-  }
+    setInterval(function () {
+        $(".limeclick").each(function () {
+            $(this).css('top', '30px');
+            $(this).css('opacity', '0');
 
-  lime.click(function(){
-    console.log('click');
-    count = count + clickPower;
+            if (!$(this).hasClass('left')) {
+                var left = $(this).offset().left;
+                $(this).css('left', (Math.random() * ((left + 100) - (left - 100)) + (left - 100)));
+                $(this).attr('class', 'limeclick left');
+            }
+            ;
+            if ($(this).css('top') == '30px') {
+                $(this).remove();
+            }
+        });
+    }, 50);
+
+    // function removeLime(lime) {
+    //     $(lime).remove();
+    // }
+
+    //INITIALIZE VALS ON SCREEN **************************************
     $('#count').text(countValue());
-  });
+    $("#click-power").text("Click power: " + clickPower.toString());
 
-  item1.click(function(){
-    if(price[1] <= count) {
-        count = count - price[1];
-        levels[1]++;
-        price[1] = Math.ceil(10 * Math.pow(1.05,levels[1]));
-        autoClick = autoClick + 0.1;
-        updateFields();
-    } else {
+    //update purchased
+    var i = 1;
+    $('.purchased').each(function () {
+        $(this).text(levels[i]);
+        i++;
+    });
 
+    var i = 1;
+    $('.price').each(function () {
+        $(this).text(price[i]);
+        i++;
+    });
+
+    //******************************************************************
+
+    function countValue() {
+        var display = (Math.trunc(count));
+        return display;
     }
-  });
 
-  item2.click(function(){
-    if(price[2] <= count) {
-        count = count - price[2];
-        levels[2]++;
-        price[2] = Math.ceil(100 * Math.pow(1.05,levels[2]));
-        autoClick = autoClick + 1;
-        updateFields();
-    } else {
+    setInterval(function () {
+        count = count + autoClick / 20;
+        // $('#count').text(count.toString());
+        $('#count').text(countValue());
+    }, 50);
 
+
+    function updateFields() {
+        //Update per sec
+        $("#persec").text("Per second: " + autoClick.toFixed(1));
+
+        //Update store prices
+        var i = 1;
+        $('.price').each(function () {
+            $(this).text(price[i]);
+            i++;
+        });
+        //update purchased
+        var i = 1;
+        $('.purchased').each(function () {
+            $(this).text(levels[i]);
+            i++;
+        });
     }
-  });
 
-  item3.click(function(){
-    if(price[3] <= count) {
-        count = count - price[3];
-        levels[3]++;
-        price[3] = Math.ceil(500 * Math.pow(1.05,levels[3]));
-        clickPower += 1;
-        updateFields();
-    } else {
+    lime.click(function () {
+        count = count + clickPower;
+        $('#count').text(countValue());
+    });
 
-    }
-  });
+    item1.click(function () {
+        if (price[1] <= count) {
+            count = count - price[1];
+            levels[1]++;
+            price[1] = Math.ceil(basePrice[1] * Math.pow(1.05, levels[1]));
+            autoClick = autoClick + 0.1;
+            updateFields();
+        } else {
 
-  lime.mousedown(function () {
-      lime.attr('class', 'clicked');
-  });
-  lime.mouseup(function () {
-      lime.attr('class', '');
-  });
+        }
+    });
 
+    item2.click(function () {
+        if (price[2] <= count) {
+            count = count - price[2];
+            levels[2]++;
+            price[2] = Math.ceil(basePrice[2] * Math.pow(1.05, levels[2]));
+            autoClick = autoClick + 1;
+            updateFields();
+        } else {
+
+        }
+    });
+
+    item3.click(function () {
+        if (price[3] <= count) {
+            count = count - price[3];
+            levels[3]++;
+            price[3] = Math.ceil(basePrice[3] * Math.pow(1.05, levels[3]));
+            clickPower += 1;
+            updateFields();
+        } else {
+
+        }
+    });
+
+    lime.mousedown(function () {
+        lime.attr('class', 'clicked');
+    });
+    lime.mouseup(function () {
+        lime.attr('class', '');
+    });
 
 
 </script>
