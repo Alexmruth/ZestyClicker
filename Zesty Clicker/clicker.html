@@ -9,6 +9,27 @@
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 
     <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #ff5c00;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
         body {
             margin: 0;
             overflow: hidden;
@@ -212,7 +233,7 @@
             height: 100%;
         }
         .img-container {
-            width: 60px;
+            width: 95px;
             height: 100%;
             position: relative;
             vertical-align: middle;
@@ -225,19 +246,21 @@
             position: relative;
         }
 
-        @media (max-height: 800px) {
+        @media (max-height: 700px) {
             #lime {
-                top: 100px;
+                top: 200px;
             }
         }
 
         @media (max-height: 640px) {
             #lime {
-                max-width: 250px;
+                height: 40%;
+                width: auto;
             }
 
             #lime.clicked {
-                max-width: 241px;
+                height: 39%;
+                width: auto;
             }
         }
 
@@ -256,13 +279,38 @@
         .rise {
             top: 0px !important;
         }
-        .border {
-            background: url(lime-border.png);
-            left: 400px;
-            position: absolute;
-            width: 28px;
-            height: 100%;
-            background-position-y: bottom;
+        .shop-tabs-container {
+            display: inline-flex;
+            width: 100%;
+            text-align: center;
+            font-size: 25px;
+            font-family: 'Kodchasan', sans-serif;
+        }
+        .shop-tabs {
+            width: 50%;
+            color: black;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            border: 2px solid  #ffc107c4;
+            border-bottom: none;
+            height:40px;
+        }
+        .shop-tabs.left {
+            border-radius: 10px 0 0 0;
+            border-right: none;
+        }
+        .shop-tabs.right {
+            border-radius: 0 10px 0 0;
+            border-left: none;
+        }
+        .shop-tabs:hover {
+            background-color: #ffc1075e; /* Green */
+            color: white;
+        }
+        .selected {
+            background-color: #ffc1075e; /* Green */
+            color: white;
         }
     </style>
 </head>
@@ -271,7 +319,11 @@
     <div id="shop-container">
         <div id="shopContent">
             <div class="shop-heading">STORE</div>
-
+            <div class="shop-tabs-container">
+                <div id="shopBtn" class="shop-tabs left selected">Shop</div>
+                <div id="upgradeBtn" class="shop-tabs right" style="">Upgrades</div>
+            </div>
+            <div id="shop">
             <div class="itemrow" id='item1'>
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="harold.png"/></div>
@@ -286,7 +338,7 @@
             </div>
             <div class="itemrow" id='item2'>
                 <div class="bg-item">
-                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="img-container"><img class="powerup-img" src="lime-tree.png"/></div>
                     <div class="item-container">
                         <div class="left">Lime Tree</div>
                         <div class="right"><img class="lime-small" src="lime.png"/>
@@ -302,7 +354,7 @@
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
-                        <div class="left">Item 3</div>
+                        <div class="left">Organic Farm</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -314,7 +366,7 @@
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
-                        <div class="left">Item 4</div>
+                        <div class="left">Greenhouse</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -326,7 +378,7 @@
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
-                        <div class="left">Item 5</div>
+                        <div class="left">GMO</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -338,7 +390,7 @@
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
-                        <div class="left">Item 6</div>
+                        <div class="left">Factory</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -347,6 +399,84 @@
                 </div>
             </div>
         </div>
+        </div>
+        <div id="upgrades" style="display: none">
+            <div class="itemrow" id='upgrade1'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="harold.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Harold</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itemrow" id='upgrade2'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime-tree.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Lime Tree</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/>
+                            <p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="itemrow" id='upgrade3'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Organic Farm</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itemrow" id='upgrade4'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Greenhouse</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itemrow" id='upgrade5'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">GMO</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itemrow" id='upgrade6'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Factory</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <!--<div class="border"></div>-->
     <div id="container">
@@ -426,6 +556,27 @@
         i++;
     });
     //******************************************************************
+    $(window).resize(function() {
+        if($(window).height() < 600) {
+            $("#shop-container").css('overflow-y', 'scroll');
+        } else {
+            $("#shop-container").css('overflow-y', '');
+        }
+    });
+    $("#shopBtn").click(function() {
+        $("#shopBtn").addClass('selected');
+        $("#shop").css('display', 'block');
+        $("#upgradeBtn").removeClass('selected');
+        $("#upgrades").css('display', 'none');
+    });
+    $("#upgradeBtn").click(function() {
+        $("#shopBtn").removeClass('selected');
+        $("#shop").css('display', 'none');
+        $("#upgradeBtn").addClass('selected');
+        $("#upgrades").css('display', 'block');
+
+    });
+
 
     //LIME ACTIONS *****************************************************
     lime.click(function () {
@@ -524,7 +675,7 @@
             count = count - price[4];
             levels[4]++;
             price[4] = Math.ceil(basePrice[4] * Math.pow(1.1, levels[4]));
-            clickPower += autoClickPower[4];
+            autoClick += autoClickPower[4];
             updateFields();
         }
     });
@@ -534,7 +685,7 @@
             count = count - price[5];
             levels[5]++;
             price[5] = Math.ceil(basePrice[5] * Math.pow(1.1, levels[5]));
-            clickPower += autoClickPower[5];
+            autoClick += autoClickPower[5];
             updateFields();
         }
     });
@@ -544,7 +695,7 @@
             count = count - price[6];
             levels[6]++;
             price[6] = Math.ceil(basePrice[6] * Math.pow(1.1, levels[6]));
-            clickPower += autoClickPower[6];
+            autoClick += autoClickPower[6];
             updateFields();
         }
     });
