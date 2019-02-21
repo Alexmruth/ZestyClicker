@@ -92,7 +92,8 @@
         h1 {
             margin-bottom: 0px;
             text-align: center;
-            font-size: 60px;
+            font-size: 50px;
+            padding-bottom: 10px;
             font-family: 'Kodchasan', sans-serif;
         }
 
@@ -122,9 +123,13 @@
             position: fixed;
             bottom: 0px;
         }
+        #shop {
+        }
+        #upgrades {
 
+        }
         #shop-container {
-            width: 400px;
+            width: 350px;
             height: 100vh;
             left: 0;
             position: absolute;
@@ -161,10 +166,15 @@
 
         #shopContent {
             width: 100%;
+            height: 100%;
+            border-width: 2px 2px 0 0;
+            border-radius: 10px;
+            border-color: #ffc107c4;
+            border-style: solid;
         }
 
         .itemrow {
-            height: 95px;
+            height: 85px;
             width: 100%;
             background-repeat: no-repeat;
             cursor: pointer;
@@ -172,7 +182,7 @@
             /*border-top: 2px solid #000000b5;*/
             font-family: 'Kodchasan', sans-serif;
             font-weight: 600;
-            font-size: 22px;
+            font-size: 20px;
 
             /*background: rgb(0,255,171);*/
             /*background: -moz-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);*/
@@ -198,7 +208,8 @@
             display: table-row;
         }
 
-        .price {
+        .price,
+        .price2{
             width: 50%;
             padding-left: 5px;
             display: inline;
@@ -229,18 +240,18 @@
             display: unset;
             position: absolute;
             left: 50%;
-            /* width: 70%; */
+            width: 350px;
             height: 100%;
         }
         .img-container {
-            width: 95px;
+            width: 85px;
             height: 100%;
             position: relative;
             vertical-align: middle;
             display: table-cell;
         }
         .powerup-img {
-            height: 95px;
+            height: 80px;
             display: inline-block;
             vertical-align: middle;
             position: relative;
@@ -292,16 +303,13 @@
             text-align: center;
             -webkit-transition-duration: 0.4s; /* Safari */
             transition-duration: 0.4s;
-            border: 2px solid  #ffc107c4;
             border-bottom: none;
             height:40px;
         }
         .shop-tabs.left {
-            border-radius: 10px 0 0 0;
             border-right: none;
         }
         .shop-tabs.right {
-            border-radius: 0 10px 0 0;
             border-left: none;
         }
         .shop-tabs:hover {
@@ -317,13 +325,25 @@
 <body id="body">
 <div class="bg">
     <div id="shop-container">
+        <div class="shop-heading">STORE</div>
         <div id="shopContent">
-            <div class="shop-heading">STORE</div>
             <div class="shop-tabs-container">
-                <div id="shopBtn" class="shop-tabs left selected">Shop</div>
+                <div id="shopBtn" class="shop-tabs left selected">Main</div>
                 <div id="upgradeBtn" class="shop-tabs right" style="">Upgrades</div>
             </div>
             <div id="shop">
+                <div class="itemrow" id='item0'>
+                    <div class="bg-item">
+                        <div class="img-container"><img class="powerup-img" src="cursor.png"/></div>
+                        <div class="item-container">
+                            <div class="left">Clicking Power</div>
+                            <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        </div>
+                        <div class="purchased-container">
+                            <p class="purchased"></p>
+                        </div>
+                    </div>
+                </div>
             <div class="itemrow" id='item1'>
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="harold.png"/></div>
@@ -399,17 +419,30 @@
                 </div>
             </div>
         </div>
-        </div>
+
+
         <div id="upgrades" style="display: none">
+            <div class="itemrow" id='upgrade0'>
+                <div class="bg-item">
+                    <div class="img-container"><img class="powerup-img" src="cursor.png"/></div>
+                    <div class="item-container">
+                        <div class="left">Clicking Power</div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
+                    </div>
+                    <div class="purchased-container">
+                        <p class="purchased2"></p>
+                    </div>
+                </div>
+            </div>
             <div class="itemrow" id='upgrade1'>
                 <div class="bg-item">
                     <div class="img-container"><img class="powerup-img" src="harold.png"/></div>
                     <div class="item-container">
                         <div class="left">Harold</div>
-                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
-                        <p class="purchased"></p>
+                        <p class="purchased2"></p>
                     </div>
                 </div>
             </div>
@@ -419,10 +452,10 @@
                     <div class="item-container">
                         <div class="left">Lime Tree</div>
                         <div class="right"><img class="lime-small" src="lime.png"/>
-                            <p class="price"></p></div>
+                            <p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
-                        <p class="purchased"></p>
+                        <p class="purchased2"></p>
                     </div>
                 </div>
             </div>
@@ -432,10 +465,10 @@
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
                         <div class="left">Organic Farm</div>
-                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
-                        <p class="purchased"></p>
+                        <p class="purchased2"></p>
                     </div>
                 </div>
             </div>
@@ -444,10 +477,10 @@
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
                         <div class="left">Greenhouse</div>
-                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
-                        <p class="purchased"></p>
+                        <p class="purchased2"></p>
                     </div>
                 </div>
             </div>
@@ -456,10 +489,10 @@
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
                         <div class="left">GMO</div>
-                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
-                        <p class="purchased"></p>
+                        <p class="purchased2"></p>
                     </div>
                 </div>
             </div>
@@ -468,10 +501,10 @@
                     <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
                     <div class="item-container">
                         <div class="left">Factory</div>
-                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
-                        <p class="purchased"></p>
+                        <p class="purchased2"></p>
                     </div>
                 </div>
             </div>
@@ -498,6 +531,7 @@
 
 <script type="text/javascript">
     var lime = $('#lime');
+    var mouse = $("#item0");
     var item1 = $('#item1');
     var item2 = $('#item2');
     var item3 = $('#item3');
@@ -505,54 +539,64 @@
     var item5 = $('#item5');
     var item6 = $('#item6');
 
+    var upgradeMouse = $("#upgrade0");
+    var upgrade1 = $('#upgrade1');
+    var upgrade2 = $('#upgrade2');
+    var upgrade3 = $('#upgrade3');
+    var upgrade4 = $('#upgrade4');
+    var upgrade5 = $('#upgrade5');
+    var upgrade6 = $('#upgrade6');
+
     var count = 0;
     var clickPower = 1;
 
     var autoClick = 0;
-    var levels = [];
-    levels[0] = 0;
-    levels[1] = 0;
-    levels[2] = 0;
-    levels[3] = 0;
-    levels[4] = 0;
-    levels[5] = 0;
-    levels[6] = 0;
+
+    var levels = [1,0,0,0,0,0,0];
+    //                    0  1  2  3   4  5   6     7
     var autoClickPower = [1,0.1,1,10,100,800,7000,15000];
-// next base price = previous x 10 + 1/8
-    var basePrice = [];
-    basePrice[0] = 1; // = 0.1
-    basePrice[1] = 10; // = 1
-    basePrice[2] = 100; // = 10
-    basePrice[3] = 1012; // = 100
-    basePrice[4] = 11380; // 800
-    basePrice[5] = 128000; // 7000
-    basePrice[6] = 1340000; // 15000
+    var acm = [1,1,1,1,1,1,1,1];
+    //                0    1   2    3      4       5        6
+    var basePrice = [100, 10, 100, 1012, 11380, 128000, 1340000];
 
-    var price = [];
-    price[0] = 1;
-    price[1] = 10;
-    price[2] = 100;
-    price[3] = 1012;
-    price[4] = 11380;
-    price[5] = 128000;
-    price[6] = 1340000;
+    //            0   1    2    3      4      5        6
+    var price = [100, 10, 100, 1012, 11380, 128000, 1340000];
 
+
+    var upgradeLevels = [0, 0, 0, 0, 0, 0, 0];
+
+    var upgradePrice = [10000,1000,5000,18000,80000,450000,5000000];
+
+    var clicks = 0;
+    var spent = 0;
 
 
     //INITIALIZE VALS ON SCREEN **************************************
     $('#count').text(countValue());
     $("#click-power").text("Click power: " + clickPower.toString());
 
-    //update purchased
-    var i = 1;
+    //update price
+    var i = 0;
     $('.purchased').each(function () {
         $(this).text(levels[i]);
         i++;
     });
 
-    var i = 1;
+    var i = 0;
     $('.price').each(function () {
         $(this).text(price[i]);
+        i++;
+    });
+    //update upgrades
+    var i = 0;
+    $('.purchased2').each(function () {
+        $(this).text(upgradeLevels[i]);
+        i++;
+    });
+
+    var i = 0;
+    $('.price2').each(function () {
+        $(this).text(upgradePrice[i]);
         i++;
     });
     //******************************************************************
@@ -582,6 +626,7 @@
     lime.click(function () {
         count = count + clickPower;
         $('#count').text(countValue());
+        clicks+= 1;
     });
     lime.mousedown(function () {
         lime.attr('class', 'clicked');
@@ -608,8 +653,7 @@
                 $(this).css('left', (Math.random() * ((left + 100) - (left - 100)) + (left - 100)));
                 $(this).attr('class', 'limeclick left');
             }
-            ;
-            if ($(this).css('top') == '30px') {
+            if ($(this).css('top') === '30px') {
                 $(this).remove();
             }
         });
@@ -617,8 +661,7 @@
     //***************************************************************
 
     function countValue() {
-        var display = (Math.trunc(count));
-        return display;
+        return Math.trunc(count);
     }
 
 
@@ -627,25 +670,57 @@
         $("#persec").text("Per second: " + autoClick.toFixed(1));
 
         //Update store prices
-        var i = 1;
+        var i = 0;
         $('.price').each(function () {
             $(this).text(price[i]);
             i++;
         });
         //update purchased
-        var i = 1;
+        var i = 0;
         $('.purchased').each(function () {
             $(this).text(levels[i]);
             i++;
         });
+
+        //update upgrades
+        var i = 0;
+        $('.purchased2').each(function () {
+            $(this).text(upgradeLevels[i]);
+            i++;
+        });
+
+        var i = 0;
+        $('.price2').each(function () {
+            $(this).text(upgradePrice[i]);
+            i++;
+        });
     }
+
+    function updateAutoclick() {
+        autoClick = (autoClickPower[1] * acm[1] * levels[1]) + (autoClickPower[2] * acm[2] * levels[2]) + (autoClickPower[3] * acm[3] * levels[3]) + (autoClickPower[4] * acm[4] * levels[4]) + (autoClickPower[5] * acm[5] * levels[5]) + (autoClickPower[6] * acm[6] * levels[6]);
+    }
+    function updateCP() {
+        clickPower = levels[0] * acm[0];
+    }
+
+    mouse.click(function() {
+        if (price[0] <= count) {
+            count = count - price[0];
+            spent += price[0];
+            levels[0]++;
+            price[0] = Math.ceil(basePrice[0] * Math.pow(1.5, levels[0]));
+            updateCP();
+            updateFields();
+        }
+    });
 
     item1.click(function () {
         if (price[1] <= count) {
             count = count - price[1];
+            spent += price[1];
             levels[1]++;
             price[1] = Math.ceil(basePrice[1] * Math.pow(1.1, levels[1]));
-            autoClick += autoClickPower[1];
+            updateAutoclick();
             updateFields();
         }
     });
@@ -655,7 +730,7 @@
             count = count - price[2];
             levels[2]++;
             price[2] = Math.ceil(basePrice[2] * Math.pow(1.1, levels[2]));
-            autoClick += autoClickPower[2];
+            updateAutoclick();
             updateFields();
         }
     });
@@ -665,7 +740,7 @@
             count = count - price[3];
             levels[3]++;
             price[3] = Math.ceil(basePrice[3] * Math.pow(1.1, levels[3]));
-            autoClick += autoClickPower[3];
+            updateAutoclick();
             updateFields();
         }
     });
@@ -675,7 +750,7 @@
             count = count - price[4];
             levels[4]++;
             price[4] = Math.ceil(basePrice[4] * Math.pow(1.1, levels[4]));
-            autoClick += autoClickPower[4];
+            updateAutoclick();
             updateFields();
         }
     });
@@ -685,7 +760,7 @@
             count = count - price[5];
             levels[5]++;
             price[5] = Math.ceil(basePrice[5] * Math.pow(1.1, levels[5]));
-            autoClick += autoClickPower[5];
+            updateAutoclick();
             updateFields();
         }
     });
@@ -695,7 +770,93 @@
             count = count - price[6];
             levels[6]++;
             price[6] = Math.ceil(basePrice[6] * Math.pow(1.1, levels[6]));
-            autoClick += autoClickPower[6];
+            updateAutoclick();
+            updateFields();
+        }
+    });
+
+
+
+    upgradeMouse.click(function() {
+        if (upgradePrice[0] <= count) {
+            count = count - upgradePrice[0];
+            spent += upgradePrice[0];
+            upgradeLevels[0]++;
+            upgradePrice[0] = Math.ceil(Math.pow(1.5, upgradeLevels[0]));
+            acm[0] += 1;
+            updateCP();
+            updateFields();
+        }
+    });
+
+    upgrade1.click(function () {
+        if (upgradePrice[1] <= count) {
+            count = count - upgradePrice[1];
+            spent += upgradePrice[1];
+            upgradeLevels[1]++;
+            upgradePrice[1] = Math.ceil(Math.pow(1.5, upgradeLevels[1]));
+            acm[1] += 1;
+            updateAutoclick();
+            updateFields();
+        }
+    });
+
+    upgrade2.click(function () {
+        if (upgradePrice[2] <= count) {
+            count = count - upgradePrice[2];
+            spent += upgradePrice[2];
+            upgradeLevels[2]++;
+            upgradePrice[2] = Math.ceil(Math.pow(1.5, upgradeLevels[2]));
+            acm[2] += 1;
+            updateAutoclick();
+            updateFields();
+        }
+    });
+
+    upgrade3.click(function () {
+        if (upgradePrice[3] <= count) {
+            count = count - upgradePrice[3];
+            spent += upgradePrice[3];
+            upgradeLevels[3]++;
+            upgradePrice[3] = Math.ceil(Math.pow(1.5, upgradeLevels[3]));
+            acm[3] += 1;
+            updateAutoclick();
+            updateFields();
+        }
+    });
+
+    upgrade4.click(function () {
+        if (upgradePrice[4] <= count) {
+            count = count - upgradePrice[4];
+            spent += upgradePrice[4];
+            upgradeLevels[4]++;
+            upgradePrice[4] = Math.ceil(Math.pow(1.5, upgradeLevels[4]));
+            acm[4] += 1;
+            updateAutoclick();
+            updateFields();
+        }
+    });
+
+    upgrade5.click(function () {
+        if (upgradePrice[5] <= count) {
+            count = count - upgradePrice[5];
+            spent += upgradePrice[5];
+            upgradeLevels[5]++;
+            upgradePrice[5] = Math.ceil(Math.pow(1.5, upgradeLevels[5]));
+            acm[5] += 1;
+            updateAutoclick();
+            updateFields();
+        }
+    });
+
+    upgrade6.click(function () {
+        if (upgradePrice[6] <= count) {
+            count = count - upgradePrice[6];
+            spent += upgradePrice[6];
+            upgradeLevels[6]++;
+            upgradePrice[6] = Math.ceil(Math.pow(1.8, upgradeLevels[6]));
+            acm[6] += 1;
+            updateAutoclick();
             updateFields();
         }
     });
