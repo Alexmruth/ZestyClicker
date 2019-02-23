@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Zesty Clicker</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Hind' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kodchasan' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
@@ -35,17 +39,14 @@
             overflow: hidden;
             user-select: none;
             -moz-user-select: none;
+            font-family: 'Kodchasan', sans-serif;
         }
 
         .bg {
+            top:40px;
             width: 100%;
             height: 100%;
             position: absolute;
-            /*background: rgb(101,237,172);*/
-            /*background: -moz-linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
-            /*background: -webkit-linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
-            /*background: linear-gradient(180deg, rgba(101,237,172,1) 0%, rgba(45,196,45,1) 51%, rgba(45,130,67,1) 100%);*/
-            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#65edac",endColorstr="#2d8243",GradientType=1);*/
             background: rgb(140, 255, 200);
             background: -moz-linear-gradient(180deg, rgba(140, 255, 200, 0.8435749299719888) 0%, rgba(87, 227, 141, 0.8995973389355743) 19%, rgba(45, 196, 45, 0.9668242296918768) 50%, rgba(45, 148, 61, 1) 80%, rgba(0, 110, 29, 1) 99%);
             background: -webkit-linear-gradient(180deg, rgba(140, 255, 200, 0.8435749299719888) 0%, rgba(87, 227, 141, 0.8995973389355743) 19%, rgba(45, 196, 45, 0.9668242296918768) 50%, rgba(45, 148, 61, 1) 80%, rgba(0, 110, 29, 1) 99%);
@@ -75,11 +76,16 @@
             -webkit-user-drag: none;
             -webkit-user-select: none;
             -ms-user-select: none;
+            cursor: pointer;
         }
 
-        #lime.clicked {
+        #lime:active {
             width: 73%;
             max-width: 361px;
+        }
+        .clicked {
+            -webkit-transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition:         all 300ms cubic-bezier(1,5.65,.5,0.1);
         }
 
         .lime-small {
@@ -90,10 +96,16 @@
         }
 
         h1 {
-            margin-bottom: 0px;
+            margin: 0px;
+            font-size: 28px;
+            line-height: 34px;
+            letter-spacing: 5pt;
+            display: inline-block;
             text-align: center;
-            font-size: 50px;
-            padding-bottom: 10px;
+            left: 45%;
+            width: 350px;
+            right: 0;
+            position: absolute;
             font-family: 'Kodchasan', sans-serif;
         }
 
@@ -103,7 +115,7 @@
             font-family: 'Kodchasan', sans-serif;
             font-weight: 600;
             margin-top: 5px;
-            margin-bottom: 0px;
+            margin-bottom: 10px;
         }
 
         .stats {
@@ -132,6 +144,7 @@
             width: 350px;
             height: 100vh;
             left: 0;
+            border-right: 2px solid #323632;
             position: absolute;
             background: rgb(186,137,0);
             background: -moz-linear-gradient(270deg, rgba(186,137,0,0) 1%, rgba(186,137,0,0.30015756302521013) 25%, rgba(186,137,0,0.5970763305322129) 50%, rgba(186,137,0,1) 100%);
@@ -167,9 +180,8 @@
         #shopContent {
             width: 100%;
             height: 100%;
-            border-width: 2px 2px 0 0;
-            border-radius: 10px;
-            border-color: #ffc107c4;
+            border-width: 2px 0 0 0;
+            border-color: #323632;
             border-style: solid;
         }
 
@@ -179,7 +191,7 @@
             background-repeat: no-repeat;
             cursor: pointer;
             filter: brightness(0.95);
-            /*border-top: 2px solid #000000b5;*/
+            border-top: 2px solid #323632;
             font-family: 'Kodchasan', sans-serif;
             font-weight: 600;
             font-size: 20px;
@@ -232,14 +244,17 @@
         .shop-heading {
             width: 100%;
             text-align: center;
-            font-family: 'Permanent Marker', cursive;
-            font-size: 50px;
+            font-family: 'Kodchasan', sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            height:55px;
         }
 
         #container {
             display: unset;
             position: absolute;
-            left: 50%;
+            left: 45%;
+            top:20px;
             width: 350px;
             height: 100%;
         }
@@ -269,7 +284,7 @@
                 width: auto;
             }
 
-            #lime.clicked {
+            #lime:active {
                 height: 39%;
                 width: auto;
             }
@@ -313,16 +328,123 @@
             border-left: none;
         }
         .shop-tabs:hover {
-            background-color: #ffc1075e; /* Green */
-            color: white;
+            background-color: #ffc1075e;
+            color: ghostwhite;
         }
         .selected {
-            background-color: #ffc1075e; /* Green */
-            color: white;
+            background-color: #ffc1075e;
+            color: ghostwhite;
         }
+        #header {
+            color: ghostwhite;
+            top: 0;
+            height: 40px;
+            position: absolute;
+            z-index: 500;
+            width: 100%;
+            background: rgb(63,72,63);
+            background: -moz-linear-gradient(180deg, rgba(63,72,63,1) 0%, rgba(37,37,37,1) 100%);
+            background: -webkit-linear-gradient(180deg, rgba(63,72,63,1) 0%, rgba(37,37,37,1) 100%);
+            background: linear-gradient(180deg, rgba(63,72,63,1) 0%, rgba(37,37,37,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3f483f",endColorstr="#252525",GradientType=1);
+        }
+
+        #zesty-home {
+            font-family: 'Kodchasan', serif;
+            font-size: 12pt;
+            letter-spacing: 0.3pt;
+            display: inline-block;
+            vertical-align: middle;
+            padding-top: 6px;
+            left: 10px;
+            padding-right: 15px;
+            position: absolute;
+            z-index: 100;
+        }
+        a:link, a:visited, a:active {
+            color: inherit;
+        }
+        a:hover {
+            color: #d0a20a;
+        }
+        #about {
+            display: inline-block;
+            position: absolute;
+            height: 100%;
+            width: 90px;
+            border-left: 1px solid ghostwhite;
+            text-align: center;
+            right: 0;
+            font-size: 22px;
+            padding-top: 1px;
+            font-family: 'Kodchasan', sans-serif;
+            font-weight: 600;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        #about:hover {
+            color: rgb(50, 54, 50);
+            background-color: ghostwhite;
+        }
+        #about-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 100;
+            background: #0000007d;
+            display: none;
+        }
+        #about-content {
+            width: 80%;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            color: ghostwhite;
+            border-radius: 20px;
+            background: rgb(37,37,37);
+            background: -moz-linear-gradient(180deg, rgba(37,37,37,1) 0%, rgba(63,72,63,1) 100%);
+            background: -webkit-linear-gradient(180deg, rgba(37,37,37,1) 0%, rgba(63,72,63,1) 100%);
+            background: linear-gradient(180deg, rgba(37,37,37,1) 0%, rgba(63,72,63,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#252525",endColorstr="#3f483f",GradientType=1);
+        }
+        #close-btn {
+            font-size: 24px;
+            right: 14px;
+            top: 5px;
+            font-stretch: condensed;
+            position: absolute;
+            cursor: pointer;
+        }
+        #close-btn:hover {
+            color: rgba(222, 0, 0, 0.95);
+        }
+        #version {
+            display: inline-block;
+            right: 100px;
+            height: 100%;
+            position: absolute;
+            font-family: 'Kodchasan', sans-serif;
+            padding-top: 8px;
+        }
+
     </style>
 </head>
 <body id="body">
+<div id="header">
+    <div id="zesty-home"><a href="http://zestymemes.com">Back to zestymemes.com</a></div>
+    <h1>Zesty Clicker</h1>
+    <div id="version">v 1.0</div>
+    <div id="about">About</div>
+</div>
+<div id="about-container">
+    <div id="about-content">
+        <div id="close-btn">X</div>
+    </div>
+</div>
+
+
 <div class="bg">
     <div id="shop-container">
         <div class="shop-heading">STORE</div>
@@ -372,9 +494,9 @@
 
             <div class="itemrow" id='item3'>
                 <div class="bg-item">
-                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="img-container"><img style="width: 85px; height:auto;" class="powerup-img" src="greenhouse.png"/></div>
                     <div class="item-container">
-                        <div class="left">Organic Farm</div>
+                        <div class="left">Greenhouse</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -384,9 +506,9 @@
             </div>
             <div class="itemrow" id='item4'>
                 <div class="bg-item">
-                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="img-container"><img class="powerup-img" src="organic-farm.png"/></div>
                     <div class="item-container">
-                        <div class="left">Greenhouse</div>
+                        <div class="left">Organic Farm</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -418,6 +540,18 @@
                     </div>
                 </div>
             </div>
+                <div class="itemrow" id='item7'>
+                    <div class="bg-item">
+                        <div class="img-container"><img class="powerup-img" src="lord-harold.png"/></div>
+                        <div class="item-container">
+                            <div class="left">Lord Harold</div>
+                            <div class="right"><img class="lime-small" src="lime.png"/><p class="price"></p></div>
+                        </div>
+                        <div class="purchased-container">
+                            <p class="purchased"></p>
+                        </div>
+                    </div>
+                </div>
         </div>
 
 
@@ -462,9 +596,9 @@
 
             <div class="itemrow" id='upgrade3'>
                 <div class="bg-item">
-                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="img-container"><img style="width: 85px; height:auto;" class="powerup-img" src="greenhouse.png"/></div>
                     <div class="item-container">
-                        <div class="left">Organic Farm</div>
+                        <div class="left">Greenhouse</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -474,9 +608,9 @@
             </div>
             <div class="itemrow" id='upgrade4'>
                 <div class="bg-item">
-                    <div class="img-container"><img class="powerup-img" src="lime.png"/></div>
+                    <div class="img-container"><img class="powerup-img" src="organic-farm.png"/></div>
                     <div class="item-container">
-                        <div class="left">Greenhouse</div>
+                        <div class="left">Organic Farm</div>
                         <div class="right"><img class="lime-small" src="lime.png"/><p class="price2"></p></div>
                     </div>
                     <div class="purchased-container">
@@ -513,9 +647,12 @@
     </div>
     <!--<div class="border"></div>-->
     <div id="container">
-        <h1>Zesty Clicker</h1>
+
         <div id="count-container">
             <p id="count"></p>
+            <div class="progress" style="border: 1px solid #000000;background-color: #e9ecef45;">
+                <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="200" style="transition: none; background-color: #0c8c0ccf;"></div>
+            </div>
             <p id="persec" class="stats"></p>
         </div>
         <img id="lime" src="lime.png"/>
@@ -547,6 +684,7 @@
     var upgrade5 = $('#upgrade5');
     var upgrade6 = $('#upgrade6');
 
+    var progress = 0;
     var count = 0;
     var clickPower = 1;
 
@@ -557,7 +695,7 @@
     var autoClickPower = [1,0.1,1,10,100,800,7000,15000];
     var acm = [1,1,1,1,1,1,1,1];
     //                0    1   2    3      4       5        6
-    var basePrice = [100, 10, 100, 1012, 11380, 128000, 1340000];
+    var basePrice = [50, 10, 100, 1012, 11380, 128000, 1340000];
 
     //            0   1    2    3      4      5        6
     var price = [100, 10, 100, 1012, 11380, 128000, 1340000];
@@ -601,10 +739,10 @@
     });
     //******************************************************************
     $(window).resize(function() {
-        if($(window).height() < 600) {
-            $("#shop-container").css('overflow-y', 'scroll');
+        if($(window).height() < $("#shopContent").height()) {
+            $("#shopContent").css('overflow-y', 'scroll');
         } else {
-            $("#shop-container").css('overflow-y', '');
+            $("#shopContent").css('overflow-y', '');
         }
     });
     $("#shopBtn").click(function() {
@@ -627,13 +765,23 @@
         count = count + clickPower;
         $('#count').text(countValue());
         clicks+= 1;
+        progressBar();
     });
     lime.mousedown(function () {
-        lime.attr('class', 'clicked');
-    });
-    lime.mouseup(function () {
         lime.attr('class', '');
     });
+    lime.mouseup(function () {
+        lime.attr('class', 'clicked');
+    });
+
+    function progressBar() {
+        progress++;
+        $("#progress").css('width', progress/4 + '%');
+        if (progress >= 400) {
+            progress = 0;
+            $("#progress").css('width', progress/4 + '%');
+        }
+    }
 
     lime.mousedown(function (e) {
         $("body").append('<div class="limeclick" style="top:' + (e.clientY - 20) + 'px; left:' + (e.clientX - 15) + 'px; position:fixed; pointer-events: none;">+' + clickPower + '</div>');
@@ -645,7 +793,7 @@
         $('#count').text(countValue());
 
         $(".limeclick").each(function () {
-            $(this).css('top', '30px');
+            $(this).css('top', '50px');
             $(this).css('opacity', '0');
 
             if (!$(this).hasClass('left')) {
@@ -653,12 +801,26 @@
                 $(this).css('left', (Math.random() * ((left + 100) - (left - 100)) + (left - 100)));
                 $(this).attr('class', 'limeclick left');
             }
-            if ($(this).css('top') === '30px') {
+            if ($(this).css('top') === '50px') {
                 $(this).remove();
+            }
+            if ($(".limeclick").length > 40) {
+                $(".limeclick").first().remove();
             }
         });
     }, 50);
+
     //***************************************************************
+    $("#about").click(function() {
+        if($("#about-container").css('display') === 'block') {
+            $("#about-container").css('display', 'none');
+        } else {
+            $("#about-container").css('display', 'block');
+        }
+    });
+    $("#close-btn").click(function() {
+        $("#about-container").css('display', 'none');
+    });
 
     function countValue() {
         return Math.trunc(count);
