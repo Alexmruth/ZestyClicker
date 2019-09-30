@@ -86,7 +86,6 @@
             position: absolute;
             margin: auto;
             left: 95px;
-            top: 30%;
             width: 260px;
             user-select: none;
             -moz-user-select: none;
@@ -94,6 +93,9 @@
             -webkit-user-select: none;
             -ms-user-select: none;
             cursor: pointer;
+            top: -webkit-calc(50% - 130px);
+            top: -moz-calc(50% - 130px);
+            top: calc(50% - 130px);
         }
 
         #lime:active {
@@ -111,6 +113,7 @@
             max-width: 22px;
             margin-top: -5px;
         }
+
         h1 {
             margin: 0px;
             font-size: 28px;
@@ -170,9 +173,8 @@
 
         #shop-container {
             width: 500px;
+            min-width: 500px;
             height: 100vh;
-            right: 0;
-            position: absolute;
             border-left: 2px solid #323632;
             /*background: rgb(186, 137, 0);*/
             /*background: -moz-linear-gradient(270deg, rgba(186, 137, 0, 0) 1%, rgba(186, 137, 0, 0.30015756302521013) 25%, rgba(186, 137, 0, 0.5970763305322129) 50%, rgba(186, 137, 0, 1) 100%);*/
@@ -187,9 +189,11 @@
         }
 
         #more-container {
-            width: 350px;
+            -webkit-flex: auto;
+            flex: auto;
             height: 100vh;
             border-left: 2px solid #323632;
+            background: #8dba5985;
             /*background: rgb(186, 137, 0);*/
             /*background: -moz-linear-gradient(90deg, rgba(186, 137, 0, 0) 1%, rgba(186, 137, 0, 0.3029586834733894) 25%, rgba(186, 137, 0, 0.5970763305322129) 50%, rgba(186, 137, 0, 1) 100%);*/
             /*background: -webkit-linear-gradient(90deg, rgba(186, 137, 0, 0) 1%, rgba(186, 137, 0, 0.3029586834733894) 25%, rgba(186, 137, 0, 0.5970763305322129) 50%, rgba(186, 137, 0, 1) 100%);*/
@@ -225,7 +229,7 @@
         }
 
         .itemrow {
-            height: 85px;
+            height: 80px;
             width: 100%;
             background-repeat: no-repeat;
             cursor: pointer;
@@ -233,7 +237,7 @@
             border-top: 2px solid #323632;
             font-family: 'Kodchasan', sans-serif;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 18px;
 
             /*background: rgb(0,255,171);*/
             /*background: -moz-linear-gradient(0deg, rgba(0,255,171,0) 0%, rgba(0,255,171,1) 25%, rgba(0,255,171,1) 50%, rgba(0,255,171,1) 75%, rgba(0,255,171,0) 100%);*/
@@ -319,27 +323,7 @@
             height: auto;
         }
 
-        @media (max-height: 700px) {
-            #lime {
-                top: 60px;
-            }
-        }
-
-        @media (max-height: 640px) {
-            #lime {
-                height: 40%;
-                width: auto;
-            }
-
-            #lime:active {
-                height: 39%;
-                width: auto;
-            }
-        }
-
         .limeclick {
-            /*background: url(lime.png);*/
-            /*background-size: contain;*/
             font-size: 30px;
             opacity: 0.7;
             font-family: 'Kodchasan', serif;
@@ -371,8 +355,20 @@
             height: 40px;
         }
 
-        .shop-tabs.left {
-            border-right: none;
+        .game-tabs {
+            width: 50%;
+            color: black;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            border-bottom: none;
+            height: 40px;
+            border-bottom: 2px solid black;
+        }
+
+        .shop-tabs.left,
+        .game-tabs.left {
+            border-right: 2px solid black;
         }
 
         .shop-tabs.right {
@@ -387,6 +383,7 @@
         .selected {
             background-color: #ffc1075e;
             color: ghostwhite;
+            width: 85%;
         }
 
         #header {
@@ -446,6 +443,17 @@
         }
 
         #about-container {
+            width:100%;
+            padding: 20px;
+            display: none;
+        }
+
+        #settings-container {
+            padding: 20px;
+            display:none;
+        }
+
+        #about-container-old {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -502,9 +510,8 @@
         .progress {
             border: 1px solid #000000;
             background-color: #e9ecef45;
-            width: 50%;
-            left: 25%;
-            position: absolute;
+            width: 70%;
+            margin-left: 15%;
         }
 
         #stats-container {
@@ -512,6 +519,7 @@
         }
 
         .tooltiptext {
+            visibility: hidden;
             opacity: 0;
             width: fit-content;
             background: rgb(37, 37, 37);
@@ -527,13 +535,77 @@
             position: absolute;
             border: 1px solid ghostwhite;
             z-index: 1;
-            left: 102%;
+            right: 102%;
             transition: all 0.5s ease;
         }
 
         /* Show the tooltip text when you mouse over the tooltip container */
         .itemrow:hover .tooltiptext {
+            visibility: visible;
             opacity: 1;
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
         }
 
     </style>
@@ -545,7 +617,7 @@
     <div id="version">v 1.0</div>
     <div id="about">About</div>
 </div>
-<div id="about-container">
+<div id="about-container-old">
     <div id="about-content">
         <div id="close-btn">X</div>
         <div style="font-size: 18px; padding: 10px 20px; color: limegreen"><h2>About</h2>
@@ -580,11 +652,28 @@
 
     <div id="more-container">
         <div class="shop-tabs-container">
-            <div id="statsBtn" class="shop-tabs left selected">Stats</div>
-            <div id="settingsBtn" class="shop-tabs right" style="">Settings</div>
+            <div id="statsBtn" class="game-tabs left selected">Stats</div>
+            <div id="settingsBtn" class="game-tabs" style="border-right: 2px solid black;">Settings</div>
+            <div id="aboutBtn" class="game-tabs right" style="">About</div>
         </div>
-        <div id="stats-container">
 
+        <div id="stats-container"></div>
+
+        <div id="settings-container">
+           
+        </div>
+
+        <div id="about-container">
+            <h2>About</h2>
+            <p>Welcome and thank you for playing Zesty Clicker! Feel free to support this game by sharing it with your
+                friends. I plan to add content to Zesty Clicker as often as I can, so stay tuned!</p>
+            <h3>What is Zesty Clicker?</h3>
+            <p>Zesty Clicker is what's known as an incremental game, idle game or even clicker game. The aim of an
+                incremental game
+                is to click on an object repeatedly to earn currency. In Zesty Clicker, the aim is to click the lime to
+                earn Zest. Buy upgrades to increase clicking output, as well
+                as autoclickers who click for you! Earn achievements and brag to your friends when you overtake them
+                with more Zest.</p>
         </div>
     </div>
 
@@ -606,119 +695,27 @@
 </div>
 <div id="footer">
     <div style="width: 30%; display: table-cell; vertical-align: middle; padding-left: 20px">
-        <!--<input class="button" id="shop" onclick="shopClick()" type="button" value="Shop"/>-->
     </div>
 </div>
 </body>
 
+<script type="text/javascript" src="game.js"></script>
+<script src="scripts/numeral.js"></script>
+
 <script type="text/javascript">
-    var game = {
-        shop: [
-            {
-                name: 'Clicking Power',
-                basePrice: 100,
-                currentPrice: 100,
-                baseUpgradePrice: 10000,
-                upgradePrice: 10000,
-                clickPower: 1,
-                level: 1,
-                upgradeLevel: 0,
-                tooltip: "Increases the power of each click by",
-                image: 'images/cursor.png',
-            },
-            {
-                name: 'Harold',
-                basePrice: 10,
-                currentPrice: 10,
-                baseUpgradePrice: 1000,
-                upgradePrice: 1000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 0.1,
-                image: 'images/harold.png',
-
-            },
-            {
-                name: 'lime Tree',
-                basePrice: 100,
-                currentPrice: 100,
-                baseUpgradePrice: 5000,
-                upgradePrice: 5000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 10,
-                image: 'images/lime-tree.png',
-            },
-            {
-                name: 'Greenhouse',
-                basePrice: 1012,
-                currentPrice: 1012,
-                baseUpgradePrice: 18000,
-                upgradePrice: 18000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 100,
-                image: 'images/greenhouse.png',
-            },
-            {
-                name: 'Organic Farm',
-                basePrice: 11380,
-                currentPrice: 11380,
-                baseUpgradePrice: 80000,
-                upgradePrice: 80000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 800,
-                image: 'images/organic-farm.png',
-            },
-            {
-                name: 'Genetically Modified Limes',
-                basePrice: 128000,
-                currentPrice: 128000,
-                baseUpgradePrice: 450000,
-                upgradePrice: 450000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 7000,
-                image: 'images/lime.png',
-            },
-            {
-                name: 'Factory',
-                basePrice: 1340000,
-                currentPrice: 1340000,
-                baseUpgradePrice: 5000000,
-                upgradePrice: 5000000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 15000,
-                image: 'images/lime.png',
-            },
-            {
-                name: 'Lord Harold',
-                basePrice: 10000000,
-                currentPrice: 10000000,
-                baseUpgradePrice: 100000000,
-                upgradePrice: 100000000,
-                level: 0,
-                upgradeLevel: 0,
-                autoClickPower: 100000,
-                image: 'images/lord-harold.png',
-            }
-        ]
-    };
-
     var isIE = /*@cc_on!@*/!!document.documentMode;
     if (isIE) {
         alert('It has been dected you are using Internet Explorer. Most content will not function properly. It is recommended to use Chrome, Firefox or Edge.')
     }
+    var save = getCookie('game');
 
+    if (save) {
+        game = JSON.parse(save);
+    }
     var lime = $('#lime');
 
-    var progress = 0;
-    var count = 0;
-
-    $('body').on( 'keydown', function( e ) {
-       if(e.keyCode === 80) count += 1000000;
+    $('body').on('keydown', function (e) {
+        if (e.keyCode === 80) game.count += 1000000;
     });
 
     var clickPower = getClickPower();
@@ -727,13 +724,6 @@
         console.log(game.shop[0]);
         return game.shop[0].clickPower * (game.shop[0].upgradeLevel + 1);
     }
-
-    var autoClick = 0;
-
-    var levels = [1, 0, 0, 0, 0, 0, 0];
-
-    var clicks = 0;
-    var spent = 0;
 
     var shopHTML = "";
     var upgradesHTML = "";
@@ -754,7 +744,7 @@
                 "                    </div>\n" +
                 "                </div>";
 
-            upgradesHTML += "<div class='itemrow' id='upgrade" + i +"'>\n" +
+            upgradesHTML += "<div class='itemrow' id='upgrade" + i + "'>\n" +
                 "                    <div class='bg-item'>\n" +
                 "                        <div class='img-container'><img class='powerup-img' src=" + game.shop[i].image + "/></div>\n" +
                 "                        <div class='item-container'>\n" +
@@ -774,11 +764,25 @@
     } catch (e) {
         console.log(e);
     }
+    
+    var settingsHTML = "";
+    for (var i = 0; i < game.settings.length; i++) {
+        var state = game.settings[i].value == true ? 'checked' : '';
+        settingsHTML += " <div style='line-height: 35px;'>\n" +
+            "            <label class='switch'>\n" +
+            "                <input type='checkbox' id="+ game.settings[i].id+" "+ state +">\n" +
+            "                <span class='slider round'></span>\n" +
+            "            </label>\n" +
+            "            "+game.settings[i].label+"</div>";
+        console.log(settingsHTML);
+    }
+    document.getElementById('settings-container').innerHTML = settingsHTML;
 
 
     //INITIALIZE VALS ON SCREEN **************************************
     $('#count').text(countValue());
     $("#click-power").text("Click power: " + clickPower);
+    $("#persec").text("Per second: " + game.autoClick.toFixed(1));
 
     //update price
     var i = 0;
@@ -805,27 +809,9 @@
         i++;
     });
     //******************************************************************
-    var width = $(window).width();
-    if (width > 1420) {
-        $(".progress").css('width', '340px').css('left', ($("#container").width() - 340) / 2);
-    } else if (width < 1200) {
-        $(".progress").css('width', '250px').css('left', ($("#container").width() - 250) / 2);
-    } else {
-        $(".progress").css('width', '50%');
-        $(".progress").css('left', $(".progress").width() / 2);
-    }
-
     $(window).resize(function () {
-        if (width > 1420) {
-            $(".progress").css('width', '340px').css('left', ($("#container").width() - 340) / 2);
-        } else if (width < 1200) {
-            $(".progress").css('width', '250px').css('left', ($("#container").width() - 250) / 2);
-        } else {
-            $(".progress").css('width', '50%');
-            $(".progress").css('left', $(".progress").width() / 2);
-        }
-
         if ($(window).height() < $("#shopContent").height()) {
+            console.log('scroll');
             $("#shopContent").css('overflow-y', 'scroll');
         } else {
             $("#shopContent").css('overflow-y', '');
@@ -843,15 +829,36 @@
         $("#shop").css('display', 'none');
         $("#upgradeBtn").addClass('selected');
         $("#upgrades").css('display', 'block');
+    });
+
+    $("#settingsBtn").click(function () {
+        $("#settingsBtn").addClass('selected');
+        $("#statsBtn, #aboutBtn").removeClass('selected');
+        $("#settings-container").css('display', 'block');
+        $("#stats-container,#about-container").css('display', 'none');
 
     });
 
+    $("#statsBtn").click(function () {
+        $("#statsBtn").addClass('selected');
+        $("#settingsBtn, #aboutBtn").removeClass('selected');
+        $("#stats-container").css('display', 'block');
+        $("#settings-container,#about-container").css('display', 'none');
+
+    });
+
+    $("#aboutBtn").click(function () {
+        $("#aboutBtn").addClass('selected');
+        $("#settingsBtn, #statsBtn").removeClass('selected');
+        $("#about-container").css('display', 'block');
+        $("#settings-container,#stats-container").css('display', 'none');
+    });
 
     //LIME ACTIONS *****************************************************
     lime.click(function () {
-        count += clickPower;
+        game.count += clickPower;
         $('#count').text(countValue());
-        clicks += 1;
+        game.stats.clicks += 1;
         progressBar();
     });
     lime.mousedown(function () {
@@ -862,11 +869,11 @@
     });
 
     function progressBar() { // https://codepen.io/NotJess/pen/VmvvRO
-        progress++;
-        $("#progress").css('width', progress / 4 + '%');
-        if (progress >= 400) {
-            progress = 0;
-            $("#progress").css('width', progress / 4 + '%');
+        game.progress++;
+        $("#progress").css('width', game.progress / 4 + '%');
+        if (game.progress >= 400) {
+            game.progress = 0;
+            $("#progress").css('width', game.progress / 4 + '%');
         }
     }
 
@@ -874,11 +881,15 @@
         $("body").append('<div class="limeclick" style="top:' + (e.clientY - 20) + 'px; left:' + (e.clientX - 15) + 'px; position:fixed; pointer-events: none;">+' + clickPower + '</div>');
     });
 
-    setInterval(function () {
-        count = count + autoClick / 20;
-        // $('#count').text(count.toString());
-        $('#count').text(countValue());
+    var division = 10;
+    var interval = 100;
 
+    setInterval(function () {
+        game.count += game.autoClick / division;
+        $('#count').text(countValue());
+    }, interval);
+
+    setInterval(function () {
         $(".limeclick").each(function () {
             $(this).css('top', '50px');
             $(this).css('opacity', '0');
@@ -897,29 +908,36 @@
         });
     }, 50);
 
+    setInterval(function () {
+        if($('#autosaveCB').prop('checked') === true) {
+            document.cookie = setCookie('game', JSON.stringify(game), 999999);
+        }
+    }, 30000);
+
     //***************************************************************
     $("#about").click(function () {
-        if ($("#about-container").css('display') == 'none') {
-            $("#about-container").css('display', 'block');
+        if ($("#about-container-old").css('display') == 'none') {
+            $("#about-container-old").css('display', 'block');
         } else {
-            $("#about-container").css('display', 'none');
+            $("#about-container-old").css('display', 'none');
         }
     });
     $("#close-btn").click(function () {
-        $("#about-container").css('display', 'none');
+        $("#about-container-old").css('display', 'none');
     });
 
     function countValue() {
-        var raw = Math.trunc(count);
-        return numberWithCommas(raw);
+        var raw = Math.trunc(game.count);
+        if(raw < 1000000) return numberWithCommas(raw);
+        return numeral(raw).format('0.0a');
     }
 
     function updateAutoclick() {
         var total = 0;
-        for(var i = 1; i < game.shop.length; i++) {
+        for (var i = 1; i < game.shop.length; i++) {
             total += (game.shop[i].level * game.shop[i].autoClickPower * (game.shop[i].upgradeLevel + 1));
         }
-        autoClick = total;
+        game.autoClick = total;
     }
 
     $("#item0").click(function () {
@@ -944,9 +962,9 @@
 
 
     function buyAutoClickers(item) {
-        if (game.shop[item].currentPrice <= count) {
-            count = count - game.shop[item].currentPrice;
-            spent += game.shop[item].currentPrice;
+        if (game.shop[item].currentPrice <= game.count) {
+            game.count -= game.shop[item].currentPrice;
+            game.stats.spent += game.shop[item].currentPrice;
             game.shop[item].level++;
             game.shop[item].currentPrice = Math.ceil(game.shop[item].basePrice * Math.pow(1.1, game.shop[item].level));
             updateAutoclick();
@@ -954,33 +972,33 @@
             var id = '#item' + item;
             $(id).find('.price').text(game.shop[item].currentPrice);
             $(id).find('.purchased').text(game.shop[item].level);
-            $("#persec").text("Per second: " + autoClick.toFixed(1));
+            $("#persec").text("Per second: " + game.autoClick.toFixed(1));
         }
     }
 
     function buyAutoClickerUpgrades(item) {
-        if (game.shop[item].upgradePrice <= count) {
-            count = count - game.shop[item].upgradePrice;
-            spent += game.shop[item].upgradePrice;
+        if (game.shop[item].upgradePrice <= game.count) {
+            game.count -= game.shop[item].upgradePrice;
+            game.stats.spent += game.shop[item].upgradePrice;
             game.shop[item].upgradeLevel++;
             game.shop[item].upgradePrice = Math.ceil(game.shop[item].baseUpgradePrice * Math.pow(1.5, game.shop[item].upgradeLevel));
             updateAutoclick();
             var id = '#upgrade' + item;
             $(id).find('.price2').text(game.shop[item].upgradePrice);
             $(id).find('.purchased2').text(game.shop[item].upgradeLevel);
-            $("#persec").text("Per second: " + autoClick.toFixed(1));
+            $("#persec").text("Per second: " + game.autoClick.toFixed(1));
         }
     }
 
     function buyClickPower(item) {
-        if (game.shop[item].currentPrice <= count) {
-            count = count - game.shop[item].currentPrice;
-            spent += game.shop[item].currentPrice;
+        if (game.shop[item].currentPrice <= game.count) {
+            game.count -= game.shop[item].currentPrice;
+            game.stats.spent += game.shop[item].currentPrice;
             game.shop[item].level++;
-            game.shop[item].currentPrice = Math.ceil(game.shop[item].basePrice * Math.pow(1.5, levels[item]));
+            game.shop[item].currentPrice = Math.ceil(game.shop[item].basePrice * Math.pow(1.1, game.shop[item].level));
             game.shop[item].clickPower++;
             clickPower = getClickPower();
-            console.log('clickpower '+ clickPower);
+            console.log('clickpower ' + clickPower);
 
             var id = '#item' + item;
             $(id).find('.price').text(game.shop[item].currentPrice);
@@ -989,9 +1007,9 @@
     }
 
     function buyClickPowerUpgrades(item) {
-        if (game.shop[item].upgradePrice <= count) {
-            count = count - game.shop[item].upgradePrice;
-            spent += game.shop[item].upgradePrice;
+        if (game.shop[item].upgradePrice <= game.count) {
+            game.count -= game.shop[item].upgradePrice;
+            game.stats.spent += game.shop[item].upgradePrice;
             game.shop[item].upgradeLevel++;
             game.shop[item].upgradePrice = Math.ceil(game.shop[item].baseUpgradePrice * Math.pow(1.5, game.shop[item].upgradeLevel));
             clickPower = getClickPower();
@@ -1004,5 +1022,27 @@
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
 </script>
 </html>
