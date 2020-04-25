@@ -10,17 +10,20 @@ var game = {
         {
             id: 'performanceCB',
             label: 'Performance',
-            value: true
+            value: true,
+            type: 'switch'
         },
         {
             id: 'soundCB',
             label: 'Sound',
-            value: false
+            value: false,
+            type: 'switch'
         },
         {
             id: 'autosaveCB',
             label: 'Autosave',
-            value: true
+            value: true,
+            type: 'switch'
         },
     ],
     shop: [
@@ -33,7 +36,7 @@ var game = {
             clickPower: 1,
             level: 1,
             upgradeLevel: 0,
-            tooltip: "Increases the power of each click by",
+            tooltip: "Increases the power of each click to",
             image: 'images/cursor.png',
         },
         {
@@ -46,6 +49,7 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 0.1,
             image: 'images/harold.png',
+            tooltip: "Increases auto click by",
 
         },
         {
@@ -58,6 +62,7 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 10,
             image: 'images/lime-tree.png',
+            tooltip: "Increases auto click by",
         },
         {
             name: 'Greenhouse',
@@ -69,6 +74,7 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 150,
             image: 'images/greenhouse.png',
+            tooltip: "Increases auto click by",
         },
         {
             name: 'Organic Farm',
@@ -80,6 +86,7 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 500,
             image: 'images/organic-farm.png',
+            tooltip: "Increases auto click by",
         },
         {
             name: 'Genetically Modified Limes',
@@ -91,6 +98,7 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 7000,
             image: 'images/lime.png',
+            tooltip: "Increases auto click by",
         },
         {
             name: 'Factory',
@@ -102,6 +110,7 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 35000,
             image: 'images/lime.png',
+            tooltip: "Increases auto click by",
         },
         {
             name: 'Lord Harold',
@@ -113,7 +122,8 @@ var game = {
             upgradeLevel: 0,
             autoClickPower: 200000,
             image: 'images/lord-harold.png',
+            tooltip: "Increases auto click by",
         }
     ],
-    version: 1.0,
+    version: 1.1,
 };
