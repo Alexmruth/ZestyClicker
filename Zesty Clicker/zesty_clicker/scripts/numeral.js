@@ -16,8 +16,8 @@
     }
 }(this, function () {
     /************************************
-        Variables
-    ************************************/
+     Variables
+     ************************************/
 
     var numeral,
         _,
@@ -41,8 +41,8 @@
 
 
     /************************************
-        Constructors
-    ************************************/
+     Constructors
+     ************************************/
 
     // Numeral prototype object
     function Numeral(input, number) {
@@ -107,11 +107,38 @@
                 optDec = false,
                 leadingCount = 0,
                 abbr = '',
-                quadrillion = 1000000000000,
-                trillion = 1000000000000,
-                billion = 1000000000,
-                million = 1000000,
-                thousand = 1000,
+                Untrigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Trigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Novemvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Octovigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Septemvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Sesvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Quinvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Quattuorvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000000,
+                Tresvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000000,
+                Duovigintillion = 1000000000000000000000000000000000000000000000000000000000000000000000,
+                Unvigintillion = 1000000000000000000000000000000000000000000000000000000000000000000,
+                Vigintillion = 1000000000000000000000000000000000000000000000000000000000000000,
+                Novendecillion = 1000000000000000000000000000000000000000000000000000000000000,
+                Octodecillion = 1000000000000000000000000000000000000000000000000000000000,
+                Septendecillion = 1000000000000000000000000000000000000000000000000000000,
+                Sedecillion = 1000000000000000000000000000000000000000000000000000,
+                Quindecillion = 1000000000000000000000000000000000000000000000000,
+                Quattuordecillion = 1000000000000000000000000000000000000000000000,
+                Tredecillion = 1000000000000000000000000000000000000000000,
+                Duodecillion = 1000000000000000000000000000000000000000,
+                Undecillion = 1000000000000000000000000000000000000,
+                Decillion = 1000000000000000000000000000000000,
+                Nonillion = 1000000000000000000000000000000,
+                Octillion = 1000000000000000000000000000,
+                Septillion = 1000000000000000000000000,
+                Sextillion = 1000000000000000000000,
+                Quintillion = 1000000000000000000,
+                Quadrillion = 1000000000000000,
+                Trillion = 1000000000000,
+                Billion = 1000000000,
+                Million = 1000000,
+                Thousand = 1000,
                 decimal = '',
                 neg = false,
                 abbrForce, // force abbreviation
@@ -122,7 +149,7 @@
                 int,
                 precision,
                 signed,
-                thousands,
+                Thousands,
                 output;
 
             // make sure we never format a null value
@@ -152,26 +179,77 @@
                 }
 
                 format = format.replace(new RegExp(abbr + 'a[kmbt]?'), '');
-                if (abs >= quadrillion && !abbrForce || abbrForce === 't') {
-                    // quadrillion
-                    abbr += locale.abbreviations.quadrillion;
-                    value = value / quadrillion;
-                }else if (abs >= trillion && !abbrForce || abbrForce === 't') {
-                    // trillion
-                    abbr += locale.abbreviations.trillion;
-                    value = value / trillion;
-                } else if (abs < trillion && abs >= billion && !abbrForce || abbrForce === 'b') {
-                    // billion
-                    abbr += locale.abbreviations.billion;
-                    value = value / billion;
-                } else if (abs < billion && abs >= million && !abbrForce || abbrForce === 'm') {
-                    // million
-                    abbr += locale.abbreviations.million;
-                    value = value / million;
-                } else if (abs < million && abs >= thousand && !abbrForce || abbrForce === 'k') {
-                    // thousand
-                    abbr += locale.abbreviations.thousand;
-                    value = value / thousand;
+                if (abs >= Unvigintillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Unvigintillion;
+                    value = value / Unvigintillion;
+                }else if (abs >= Vigintillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Vigintillion;
+                    value = value / Vigintillion;
+                }else if (abs >= Novendecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Novendecillion;
+                    value = value / Novendecillion;
+                }else if (abs >= Octodecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Octodecillion;
+                    value = value / Octodecillion;
+                }else if (abs >= Septendecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Septendecillion;
+                    value = value / Septendecillion;
+                }else if (abs >= Sedecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Sedecillion;
+                    value = value / Sedecillion;
+                }else if (abs >= Quindecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Quindecillion;
+                    value = value / Quindecillion;
+                }else if (abs >= Quattuordecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Quattuordecillion;
+                    value = value / Quattuordecillion;
+                }else if (abs >= Tredecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Tredecillion;
+                    value = value / Tredecillion;
+                }else if (abs >= Duodecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Duodecillion;
+                    value = value / Duodecillion;
+                }else if (abs >= Undecillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Undecillion;
+                    value = value / Undecillion;
+                }else if (abs >= Decillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Decillion;
+                    value = value / Decillion;
+                }else if (abs >= Nonillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Nonillion;
+                    value = value / Nonillion;
+                }else if (abs >= Octillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Octillion;
+                    value = value / Octillion;
+                }else if (abs >= Septillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Septillion;
+                    value = value / Septillion;
+                }else if (abs >= Sextillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Sextillion;
+                    value = value / Sextillion;
+                }else if (abs >= Quintillion && !abbrForce || abbrForce === 't') {
+                    abbr += locale.abbreviations.Quintillion;
+                    value = value / Quintillion;
+                }else if (abs >= Quadrillion && !abbrForce || abbrForce === 't') {
+                    // Quadrillion
+                    abbr += locale.abbreviations.Quadrillion;
+                    value = value / Quadrillion;
+                }else if (abs >= Trillion && !abbrForce || abbrForce === 't') {
+                    // Trillion
+                    abbr += locale.abbreviations.Trillion;
+                    value = value / Trillion;
+                } else if (abs < Trillion && abs >= Billion && !abbrForce || abbrForce === 'b') {
+                    // Billion
+                    abbr += locale.abbreviations.Billion;
+                    value = value / Billion;
+                } else if (abs < Billion && abs >= Million && !abbrForce || abbrForce === 'm') {
+                    // Million
+                    abbr += locale.abbreviations.Million;
+                    value = value / Million;
+                } else if (abs < Million && abs >= Thousand && !abbrForce || abbrForce === 'k') {
+                    // Thousand
+                    abbr += locale.abbreviations.Thousand;
+                    value = value / Thousand;
                 }
             }
 
@@ -184,7 +262,7 @@
             // break number and format
             int = value.toString().split('.')[0];
             precision = format.split('.')[1];
-            thousands = format.indexOf(',');
+            Thousands = format.indexOf(',');
             leadingCount = (format.split('.')[0].split(',')[0].match(/0/g) || []).length;
 
             if (precision) {
@@ -212,18 +290,18 @@
             }
 
             // check abbreviation again after rounding
-            if (abbr && !abbrForce && Number(int) >= 1000 && abbr !== locale.abbreviations.trillion) {
+            if (abbr && !abbrForce && Number(int) >= 1000 && abbr !== locale.abbreviations.Trillion) {
                 int = String(Number(int) / 1000);
 
                 switch (abbr) {
-                    case locale.abbreviations.thousand:
-                        abbr = locale.abbreviations.million;
+                    case locale.abbreviations.Thousand:
+                        abbr = locale.abbreviations.Million;
                         break;
-                    case locale.abbreviations.million:
-                        abbr = locale.abbreviations.billion;
+                    case locale.abbreviations.Million:
+                        abbr = locale.abbreviations.Billion;
                         break;
-                    case locale.abbreviations.billion:
-                        abbr = locale.abbreviations.trillion;
+                    case locale.abbreviations.Billion:
+                        abbr = locale.abbreviations.Trillion;
                         break;
                 }
             }
@@ -241,8 +319,8 @@
                 }
             }
 
-            if (thousands > -1) {
-                int = int.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + locale.delimiters.thousands);
+            if (Thousands > -1) {
+                int = int.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + locale.delimiters.Thousands);
             }
 
             if (format.indexOf('.') === 0) {
@@ -268,13 +346,31 @@
             var locale = locales[options.currentLocale],
                 stringOriginal = string,
                 abbreviations = {
-                    thousand: 3,
-                    million: 6,
-                    billion: 9,
-                    trillion: 12,
-                    quadrillion: 15,
-                    quintillion: 18,
-                    sextillion: 21,
+                    Thousand: 3,
+                    Million: 6,
+                    Billion: 9,
+                    Trillion: 12,
+                    Quadrillion: 15,
+                    Quintillion: 18,
+                    Sextillion: 21,
+                    Septillion: 24,
+                    Octillion: 27,
+                    Nonillion: 30,
+                    Decillion: 33,
+                    Undecillion: 36,
+                    Duodecillion: 39,
+                    Tredecillion: 42,
+                    Quattuordecillion: 45,
+                    Quindecillion: 48,
+                    Sedecillion: 51,
+                    Septendecillion: 54,
+                    Octodecillion: 57,
+                    Novendecillion: 60,
+                    Vigintillion: 63,
+                    Unvigintillion: 66,
+                    Duovigintillion: 69,
+                    Tresvigintillion: 72,
+
                 },
                 abbreviation,
                 value,
@@ -394,9 +490,9 @@
 
             // Use the smallest precision value possible to avoid errors from floating point representation
             if (splitValue.length === 2) {
-              boundedPrecision = Math.min(Math.max(splitValue[1].length, minDecimals), maxDecimals);
+                boundedPrecision = Math.min(Math.max(splitValue[1].length, minDecimals), maxDecimals);
             } else {
-              boundedPrecision = minDecimals;
+                boundedPrecision = minDecimals;
             }
 
             power = Math.pow(10, boundedPrecision);
@@ -483,11 +579,11 @@
 
     numeral.validate = function(val, culture) {
         var _decimalSep,
-            _thousandSep,
+            _ThousandSep,
             _currSymbol,
             _valArray,
             _abbrObj,
-            _thousandRegEx,
+            _ThousandRegEx,
             localeData,
             temp;
 
@@ -513,7 +609,7 @@
             return false;
         }
 
-        //get the decimal and thousands separator from numeral.localeData
+        //get the decimal and Thousands separator from numeral.localeData
         try {
             //check if the culture is understood by numeral. if not, default it to current locale
             localeData = numeral.localeData(culture);
@@ -525,10 +621,10 @@
         _currSymbol = localeData.currency.symbol;
         _abbrObj = localeData.abbreviations;
         _decimalSep = localeData.delimiters.decimal;
-        if (localeData.delimiters.thousands === '.') {
-            _thousandSep = '\\.';
+        if (localeData.delimiters.Thousands === '.') {
+            _ThousandSep = '\\.';
         } else {
-            _thousandSep = localeData.delimiters.thousands;
+            _ThousandSep = localeData.delimiters.Thousands;
         }
 
         // validating currency symbol
@@ -544,12 +640,12 @@
         temp = val.match(/[^\d]+$/);
         if (temp !== null) {
             val = val.slice(0, -1);
-            if (temp[0] !== _abbrObj.thousand && temp[0] !== _abbrObj.million && temp[0] !== _abbrObj.billion && temp[0] !== _abbrObj.trillion) {
+            if (temp[0] !== _abbrObj.Thousand && temp[0] !== _abbrObj.Million && temp[0] !== _abbrObj.Billion && temp[0] !== _abbrObj.Trillion) {
                 return false;
             }
         }
 
-        _thousandRegEx = new RegExp(_thousandSep + '{2}');
+        _ThousandRegEx = new RegExp(_ThousandSep + '{2}');
 
         if (!val.match(/[^\d.,]/g)) {
             _valArray = val.split(_decimalSep);
@@ -557,12 +653,12 @@
                 return false;
             } else {
                 if (_valArray.length < 2) {
-                    return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_thousandRegEx));
+                    return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_ThousandRegEx));
                 } else {
                     if (_valArray[0].length === 1) {
-                        return ( !! _valArray[0].match(/^\d+$/) && !_valArray[0].match(_thousandRegEx) && !! _valArray[1].match(/^\d+$/));
+                        return ( !! _valArray[0].match(/^\d+$/) && !_valArray[0].match(_ThousandRegEx) && !! _valArray[1].match(/^\d+$/));
                     } else {
-                        return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_thousandRegEx) && !! _valArray[1].match(/^\d+$/));
+                        return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_ThousandRegEx) && !! _valArray[1].match(/^\d+$/));
                     }
                 }
             }
@@ -573,8 +669,8 @@
 
 
     /************************************
-        Numeral Prototype
-    ************************************/
+     Numeral Prototype
+     ************************************/
 
     numeral.fn = Numeral.prototype = {
         clone: function() {
@@ -670,29 +766,50 @@
     };
 
     /************************************
-        Default Locale && Format
-    ************************************/
+     Default Locale && Format
+     ************************************/
 
     numeral.register('locale', 'en', {
         delimiters: {
-            thousands: ',',
+            Thousands: ',',
             decimal: '.'
         },
         abbreviations: {
-            thousand: 'k',
-            million: 'million',
-            billion: 'billion',
-            trillion: 'trillion',
-            quadrillion: 'quadrillion',
-            quintillion: 'Quintillion',
+            Thousand: 'k',
+            Million: 'Million',
+            Billion: 'Billion',
+            Trillion: 'Trillion',
+            Quadrillion: 'Quadrillion',
+            Quintillion: 'Quintillion',
             sextillion: 'Sextillion',
+            Septillion: 'Septillion',
+            Octillion: 'Octillion',
+            Nonillion: 'Nonillion',
+            Decillion: 'Decillion',
+            Undecillion: 'Undecillion',
+            Duodecillion: 'Duodecillion',
+            Tredecillion: 'Tredecillion',
+            Quattuordecillion: 'Quattuordecillion',
+            Quindecillion: 'Quindecillion',
+            Sedecillion: 'Sedecillion',
+            Septendecillion: 'Septendecillion',
+            Octodecillion: 'Octodecillion',
+            Novendecillion: 'Novendecillion',
+            Vigintillion: 'Vigintillion',
+            Unvigintillion: 'Unvigintillion',
+            Duovigintillion: 'Duovigintillion',
+            Tresvigintillion: 'Tresvigintillion',
+            Quattuorvigintillion: 'Quattuorvigintillion',
+            Quinvigintillion: 'Quinvigintillion',
+            Sesvigintillion: 'Sesvigintillion',
+            Septemvigintillion: 'Septemvigintillion',
         },
         ordinal: function(number) {
             var b = number % 10;
             return (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
-                (b === 2) ? 'nd' :
-                (b === 3) ? 'rd' : 'th';
+                    (b === 2) ? 'nd' :
+                        (b === 3) ? 'rd' : 'th';
         },
         currency: {
             symbol: '$'

@@ -26,7 +26,7 @@
 
         @font-face {
             font-family: Kodchasan;
-            src: url(fonts/Kodchasan-bold.ttf);
+            src: url(fonts/Kodchasan-Bold.ttf);
             font-weight: bold;
         }
 
@@ -751,7 +751,7 @@
             shopHTML += "<div class='itemrow' id='item" + i + "'>\n" +
                 "                    <span class='tooltiptext'>" + game.shop[i].tooltip +" <span class='power'> " + getTooltipValue(game.shop[i], i) + "</span> limes</span>\n" +
                 "                    <div class='bg-item'>\n" +
-                "                        <div class='img-container'><img class='powerup-img' src=" + game.shop[i].image + "/></div>\n" +
+                "                        <div class='img-container'><img class='powerup-img' src='" + game.shop[i].image + "'/></div>\n" +
                 "                        <div class='item-container'>\n" +
                 "                            <div class='left'>" + game.shop[i].name + "</div>\n" +
                 "                            <div class='right'><img class='lime-small' src='images/lime.png'/><p class='price'></p></div>\n" +
@@ -764,7 +764,7 @@
 
             upgradesHTML += "<div class='itemrow' id='upgrade" + i + "'>\n" +
                 "                    <div class='bg-item'>\n" +
-                "                        <div class='img-container'><img class='powerup-img' src=" + game.shop[i].image + "/></div>\n" +
+                "                        <div class='img-container'><img class='powerup-img' src='" + game.shop[i].image + "'/></div>\n" +
                 "                        <div class='item-container'>\n" +
                 "                            <div class='left'>" + game.shop[i].name + "</div>\n" +
                 "                            <div class='right'><img class='lime-small' src='images/lime.png'/>\n" +
